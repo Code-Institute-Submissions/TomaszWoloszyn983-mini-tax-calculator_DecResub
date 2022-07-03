@@ -1,14 +1,14 @@
-<mxfile host="app.diagrams.net" modified="2022-07-03T19:27:05.122Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="015m_t814MMosMJI5WdS" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-03T19:36:38.449Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="bml6MczdThHtm2TdtR_r" version="20.0.4" type="github">
   <diagram id="5d712PURRep5_9I_O1BZ" name="Page-1">
-    <mxGraphModel dx="1303" dy="727" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1564" dy="872" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="lr9qJDFKW7P0UVie4wkK-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#a0522d;fontColor=#ffffff;strokeColor=#6D1F00;shadow=0;" parent="1" vertex="1">
+        <mxCell id="lr9qJDFKW7P0UVie4wkK-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="40" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="lr9qJDFKW7P0UVie4wkK-2" value="End" style="ellipse;whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;" parent="1" vertex="1">
-          <mxGeometry x="550" y="1400" width="120" height="80" as="geometry" />
+        <mxCell id="lr9qJDFKW7P0UVie4wkK-2" value="End" style="ellipse;whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+          <mxGeometry x="547.5" y="1640" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=25;sketch=1;" parent="1" source="lr9qJDFKW7P0UVie4wkK-3" target="lr9qJDFKW7P0UVie4wkK-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -29,23 +29,23 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lr9qJDFKW7P0UVie4wkK-13" value="C" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=25;sketch=0;" parent="1" source="lr9qJDFKW7P0UVie4wkK-10" target="lr9qJDFKW7P0UVie4wkK-12" edge="1">
+        <mxCell id="lr9qJDFKW7P0UVie4wkK-13" value="C" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=25;sketch=0;exitX=0.5;exitY=0.986;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="lr9qJDFKW7P0UVie4wkK-10" target="lr9qJDFKW7P0UVie4wkK-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-10" value="&lt;br&gt;&lt;span style=&quot;font-family: Helvetica; font-size: 25px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Enter your salary or press C to calculate salary. Press Q-key to Quit&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=25;direction=south;rounded=1;sketch=0;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" parent="1" vertex="1">
-          <mxGeometry x="296.25" y="526.5699999999999" width="177.5" height="290" as="geometry" />
+          <mxGeometry x="296.25" y="679.9999999999999" width="177.5" height="290" as="geometry" />
         </mxCell>
-        <mxCell id="lr9qJDFKW7P0UVie4wkK-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=25;sketch=1;" parent="1" source="lr9qJDFKW7P0UVie4wkK-12" target="lr9qJDFKW7P0UVie4wkK-16" edge="1">
+        <mxCell id="lr9qJDFKW7P0UVie4wkK-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=25;sketch=0;" parent="1" source="lr9qJDFKW7P0UVie4wkK-12" target="lr9qJDFKW7P0UVie4wkK-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-12" value="Enter the number of hours you work weekly" style="whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" parent="1" vertex="1">
-          <mxGeometry x="40" y="606.57" width="160" height="130" as="geometry" />
+          <mxGeometry x="40" y="760" width="160" height="130" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=25;sketch=1;" parent="1" source="lr9qJDFKW7P0UVie4wkK-16" target="lr9qJDFKW7P0UVie4wkK-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-16" value="Enter your wages per hour&lt;br&gt;" style="whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" parent="1" vertex="1">
-          <mxGeometry x="40" y="830" width="160" height="100" as="geometry" />
+          <mxGeometry x="40" y="990" width="160" height="100" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=25;sketch=0;" parent="1" source="lr9qJDFKW7P0UVie4wkK-18" target="lr9qJDFKW7P0UVie4wkK-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -54,11 +54,11 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-18" value="Validate input data&amp;nbsp;" style="whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#FF8A8A;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
-          <mxGeometry x="325" y="850" width="120" height="60" as="geometry" />
+          <mxGeometry x="325" y="1010" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="lr9qJDFKW7P0UVie4wkK-20" value="" style="endArrow=classic;html=1;rounded=1;fontSize=25;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;sketch=1;" parent="1" source="lr9qJDFKW7P0UVie4wkK-10" target="lr9qJDFKW7P0UVie4wkK-18" edge="1">
+        <mxCell id="lr9qJDFKW7P0UVie4wkK-20" value="" style="endArrow=classic;html=1;rounded=1;fontSize=25;entryX=0.5;entryY=0;entryDx=0;entryDy=0;sketch=0;" parent="1" source="lr9qJDFKW7P0UVie4wkK-10" target="lr9qJDFKW7P0UVie4wkK-18" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="370" y="660" as="sourcePoint" />
+            <mxPoint x="385" y="970" as="sourcePoint" />
             <mxPoint x="370" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -66,29 +66,29 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="lr9qJDFKW7P0UVie4wkK-21" value="Enter and validate &lt;br&gt;users age&amp;nbsp;" style="whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" parent="1" vertex="1">
-          <mxGeometry x="540" y="830" width="120" height="100" as="geometry" />
+          <mxGeometry x="540" y="990" width="120" height="100" as="geometry" />
         </mxCell>
         <mxCell id="grNwTt1hIaP2UxTGi9CV-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;" parent="1" source="grNwTt1hIaP2UxTGi9CV-1" target="grNwTt1hIaP2UxTGi9CV-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="grNwTt1hIaP2UxTGi9CV-1" value="Enter and validate relation data" style="whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="532.5" y="1190" width="135" height="130" as="geometry" />
+          <mxGeometry x="532.5" y="1440" width="135" height="130" as="geometry" />
         </mxCell>
         <mxCell id="grNwTt1hIaP2UxTGi9CV-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;" parent="1" source="grNwTt1hIaP2UxTGi9CV-3" target="grNwTt1hIaP2UxTGi9CV-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="grNwTt1hIaP2UxTGi9CV-3" value="Calculate salary&lt;br&gt;&amp;nbsp;and taxes" style="whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#b1ddf0;strokeColor=#10739e;" parent="1" vertex="1">
-          <mxGeometry x="320" y="1190" width="120" height="130" as="geometry" />
+          <mxGeometry x="310" y="1440" width="120" height="130" as="geometry" />
         </mxCell>
         <mxCell id="grNwTt1hIaP2UxTGi9CV-5" value="Parse input data and update the google sheet" style="whiteSpace=wrap;html=1;fontSize=25;rounded=1;sketch=0;fillColor=#b1ddf0;strokeColor=#10739e;" parent="1" vertex="1">
-          <mxGeometry x="50" y="1190" width="160" height="130" as="geometry" />
+          <mxGeometry x="50" y="1440" width="160" height="130" as="geometry" />
         </mxCell>
         <mxCell id="grNwTt1hIaP2UxTGi9CV-12" value="" style="endArrow=classic;html=1;rounded=0;fontSize=22;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.438;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;sketch=0;" parent="1" source="grNwTt1hIaP2UxTGi9CV-5" target="lr9qJDFKW7P0UVie4wkK-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="130" y="1120" as="sourcePoint" />
             <mxPoint x="680" y="1090" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="120" y="1440" />
+              <mxPoint x="120" y="1680" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -117,7 +117,7 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9QyXsI2oVlgwy25cznoc-8" value="Q" style="endArrow=classic;html=1;rounded=0;fontSize=18;entryX=0.527;entryY=-0.01;entryDx=0;entryDy=0;entryPerimeter=0;sketch=0;" edge="1" parent="1" target="lr9qJDFKW7P0UVie4wkK-3">
+        <mxCell id="9QyXsI2oVlgwy25cznoc-8" value="Q" style="endArrow=classic;html=1;rounded=0;fontSize=18;entryX=0.527;entryY=-0.01;entryDx=0;entryDy=0;entryPerimeter=0;sketch=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="lr9qJDFKW7P0UVie4wkK-21" target="lr9qJDFKW7P0UVie4wkK-3">
           <mxGeometry x="-0.8444" width="50" height="50" relative="1" as="geometry">
             <mxPoint x="600" y="830" as="sourcePoint" />
             <mxPoint x="600" y="40" as="targetPoint" />
@@ -130,7 +130,7 @@
         <mxCell id="9QyXsI2oVlgwy25cznoc-9" value="Q" style="endArrow=classic;html=1;rounded=0;fontSize=18;exitX=0.491;exitY=0.009;exitDx=0;exitDy=0;exitPerimeter=0;sketch=0;" edge="1" parent="1" source="lr9qJDFKW7P0UVie4wkK-10">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="500" y="700" as="sourcePoint" />
-            <mxPoint x="600" y="670" as="targetPoint" />
+            <mxPoint x="600" y="822" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9QyXsI2oVlgwy25cznoc-10" value="" style="endArrow=classic;html=1;rounded=0;fontSize=18;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.009;entryY=0.501;entryDx=0;entryDy=0;entryPerimeter=0;sketch=1;" edge="1" parent="1" source="9QyXsI2oVlgwy25cznoc-4" target="lr9qJDFKW7P0UVie4wkK-10">
@@ -144,14 +144,14 @@
             <mxPoint x="210" y="1040" as="sourcePoint" />
             <mxPoint x="385" y="520" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="20" y="1035" />
-              <mxPoint x="20" y="520" />
-              <mxPoint x="240" y="520" />
+              <mxPoint x="20" y="1205" />
+              <mxPoint x="20" y="720" />
+              <mxPoint x="240" y="720" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="9QyXsI2oVlgwy25cznoc-14" value="If the input doesn&#39;t meet the requirements, display a warning message repeat the step above" style="whiteSpace=wrap;html=1;fontSize=25;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;rounded=1;sketch=0;" vertex="1" parent="1">
-          <mxGeometry x="230" y="970" width="310" height="130" as="geometry" />
+        <mxCell id="9QyXsI2oVlgwy25cznoc-14" value="If the input doesn&#39;t meet the requirements, display a warning message repeat the step above" style="whiteSpace=wrap;html=1;fontSize=25;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;rounded=1;sketch=0;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1140" width="310" height="130" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
