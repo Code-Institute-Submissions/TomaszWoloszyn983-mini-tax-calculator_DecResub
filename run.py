@@ -24,12 +24,11 @@ def welcome_message():
     and instruction for the user.
     """
     print("Welcome to Mini Tax Calculator.\n")
-    print("Thank You for using our application.")
     print("This application will help You qickly calculate your taxes\n")
     print("The application needs to ask you for few informations that are necessary for calculate your taxes\n")
     print("All sensivite data are to be used for the calculations puposes only, and will never be shared")
     print("or used for any other purpose.")
-    print(f"Welcome {get_user_name()} Thank You for using our application")
+    print(f"Welcome {validate_name(get_user_name())} Thank You for using our application")
     
 
 def get_user_name():
@@ -37,6 +36,14 @@ def get_user_name():
     Display asking for the users name.
     Returns that name.
     """
-    return input("Enter your data here: ")
+    return input("Please enter your name or nick here: ")
+
+def validate_name(name):
+    if name.replace(" ", "").isalpha():
+        print ("Name is valid")
+        return name
+    else:
+        print ("Name is invalid! Use letters from A to Z or a to z.")
+        return validate_name(input("Please enter your name again "))
 
 welcome_message()
