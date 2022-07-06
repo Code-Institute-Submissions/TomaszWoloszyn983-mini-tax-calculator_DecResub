@@ -26,9 +26,9 @@ def welcome_message():
     print("Welcome to Mini Tax Calculator.\n")
     print("This application will help You qickly calculate your taxes\n")
     print("The application needs to ask you for few informations that are necessary for calculate your taxes\n")
-    print("All sensivite data are to be used for the calculations puposes only, and will never be shared")
+    print("All sensivite data are to be used for the calculations purposes only, and will never be shared")
     print("or used for any other purpose.")
-    print(f"Welcome {validate_name(get_user_name())} Thank You for using our application")
+    print(f"Welcome {get_user_name()} Thank You for using our application")
     
 
 def get_user_name():
@@ -36,7 +36,7 @@ def get_user_name():
     Display asking for the users name.
     Returns that name.
     """
-    return input("Please enter your name or nick here: ")
+    return validate_name(input("Please enter your name or nick here: "))
 
 def validate_name(name):
     """
@@ -59,10 +59,42 @@ def quit_all():
     moves the user to the welcome_message function where he can 
     start the application from the beginning.
     """
-    print("Are you sure you want to quit the process and return to the beggining")
-    confirm = input("Press Y to confirm or N to cancel and return to the process")
-    if confirm
+    print("Are you sure you want to quit the process and return to the beginning?")
+    while True:
+        confirm = input('Press "Y" or "N" to cancel\n')
+        if confirm.upper() == "Y":
+            print("Process interrupted by the user\n\n")
+            welcome_message()
+            break
+        elif confirm.upper() == "N":
+            print("Return to the process\n")
+            break
+        else:
+            print('Tap "Y" to submit or "N" to return to the previous process')
+
+
+def request_salary():
+    """
+    Request salary from the user. 
+    If the entered value has to be validated for being integer and 
+    having the right format.
+    If the user doesn't know the value of his salary it can be 
+    calculated after typing C-key on keyboard.
+    """
+    print("\nWe are going to need your weekly salary to calculate your taxes.")
+    while True:
+        print('Please enter your weekly salary or type "C" to calculate it.')
+        print('If you want to quit You can press "Q". ')
+        user_input = input()
+        if user_input.upper() == "Q":
+            quit_all()
+        elif user_input.upper() == "C":
+            print("Not defined yet")
+        else:
+            print("We are going to calculate taxes")
+
+def main():
     welcome_message()
+    request_salary()
 
-
-welcome_message()
+main()
