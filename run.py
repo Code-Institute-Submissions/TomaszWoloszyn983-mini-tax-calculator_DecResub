@@ -59,9 +59,9 @@ def quit_all():
     moves the user to the welcome_message function where he can 
     start the application from the beginning.
     """
-    print("Are you sure you want to quit the process and return to the beginning?")
+    print("Are you sure you want to quit the proces?")
     while True:
-        confirm = input('Press "Y" or "N" to cancel\n')
+        confirm = input('Press "Y" to quit or "N" to return\n')
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
             welcome_message()
@@ -81,7 +81,8 @@ def request_salary():
     If the user doesn't know the value of his salary it can be 
     calculated after typing C-key on keyboard.
     """
-    print("\nWe are going to need your weekly salary to calculate your taxes.")
+    print("\nWe need your weekly salary to calculate your taxes.")
+    print('Please enter your salary in following format: 99.99 ')
     while True:
         print('Please enter your weekly salary or type "C" to calculate it.')
         print('If you want to quit You can press "Q". ')
@@ -90,8 +91,25 @@ def request_salary():
             quit_all()
         elif user_input.upper() == "C":
             print("Not defined yet")
+            break
         else:
+            validate_salary(user_input)
             print("We are going to calculate taxes")
+            break
+
+def validate_salary(salary):
+    """
+    Check if input salary data is an integer or float type,
+    and it is entered in the right format
+    """
+    try:
+        "{:.2f}".format(float(salary))
+        print("{:.2f}".format(float(salary)))
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+    return "{:.2f}".format(float(salary))
+        
 
 def main():
     welcome_message()
