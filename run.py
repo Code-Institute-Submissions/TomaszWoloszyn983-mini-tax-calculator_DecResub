@@ -23,11 +23,11 @@ def welcome_message():
     Dispay greetings, information about the application
     and instruction for the user.
     """
-    print("Welcome to Mini Tax Calculator.\n")
-    print("This application will help You qickly calculate your taxes\n")
-    print("The application needs to ask you for few informations that are necessary for calculate your taxes\n")
+    print("\tWelcome to Mini Tax Calculator.\n")
+    print("This application will help You qickly calculate your taxes")
+    print("The application needs to ask you for few informations that are necessary for calculate your taxes")
     print("All sensivite data are to be used for the calculations purposes only, and will never be shared")
-    print("or used for any other purpose.")
+    print("or used for any other purpose.\n")
     print(f"Welcome {get_user_name()} Thank You for using our application")
     
 
@@ -76,7 +76,7 @@ def quit_all():
 def request_salary():
     """
     Request salary from the user. 
-    If the entered value has to be validated for being integer and 
+    The entered value has to be validated for being integer and 
     having the right format.
     If the user doesn't know the value of his salary it can be 
     calculated after typing C-key on keyboard.
@@ -87,32 +87,35 @@ def request_salary():
         print('Please enter your weekly salary or type "C" to calculate it.')
         print('If you want to quit You can press "Q". ')
         user_input = input()
-        if user_input.upper() == "Q":
+        if user_input.upper() == "Q":  
             quit_all()
         elif user_input.upper() == "C":
             print("Not defined yet")
             break
-        else:
-            validate_salary(user_input)
-            print("We are going to calculate taxes")
+        elif validate_salary(user_input):
+            print(f"We are going to calculate taxes for {user_input}")
+            return user_input
             break
 
 def validate_salary(salary):
     """
     Check if input salary data is an integer or float type,
     and it is entered in the right format
+
+    The function rnds the value to the demanded format instead of checking its
+    correctness.
     """
     try:
         "{:.2f}".format(float(salary))
-        print("{:.2f}".format(float(salary)))
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
-    return "{:.2f}".format(float(salary))
+    print(f"Your salary {salary} was successfully validated ")
+    return True
         
 
 def main():
     welcome_message()
-    request_salary()
+    salary = request_salary()
 
 main()
