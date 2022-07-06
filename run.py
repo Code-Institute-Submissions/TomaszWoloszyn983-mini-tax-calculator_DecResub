@@ -59,7 +59,7 @@ def quit_all():
     moves the user to the welcome_message function where he can 
     start the application from the beginning.
     """
-    print("Are you sure you want to quit the proces?")
+    print("Are you sure you want to quit the process?")
     while True:
         confirm = input('Press "Y" to quit or "N" to return\n')
         if confirm.upper() == "Y":
@@ -90,19 +90,36 @@ def request_salary():
         if user_input.upper() == "Q":  
             quit_all()
         elif user_input.upper() == "C":
-            print("Not defined yet")
+            calculate_salary()
             break
         elif validate_salary(user_input):
             print(f"We are going to calculate taxes for {user_input}")
             return user_input
             break
 
+def calculate_salary():
+    """
+    Calculate salary based on multiplication of weekly working hours and
+    hourly rate.
+    Hourly rate can be validated using validate_salary.
+    Working hours must be validated especially dedicated function..
+    """
+    hourly_rate = input("Enter your rate per hour\n")
+    working_hours = int(input("Enter your weekly working hours\n"))
+    print(f"You work {working_hours} hours for {hourly_rate}/hour. Nice!")
+    print(f'You earn {hourly_rate*working_hours} quid')
+
+    # return "{:.2f}".format(float(hourly_rate*working_hours))
+    return hourly_rate*working_hours
+
+
 def validate_salary(salary):
     """
     Check if input salary data is an integer or float type,
     and it is entered in the right format
+    The function returns validated salary value.
 
-    The function rnds the value to the demanded format instead of checking its
+    The function rounds the value to the demanded format instead of checking its
     correctness.
     """
     try:
