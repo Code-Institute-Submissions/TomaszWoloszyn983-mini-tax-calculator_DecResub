@@ -39,11 +39,30 @@ def get_user_name():
     return input("Please enter your name or nick here: ")
 
 def validate_name(name):
+    """
+    Validate input data
+    Check if the name doesn't contain other than
+    letters. Accepted are only upper and lowercase letters.
+    """
     if name.replace(" ", "").isalpha():
-        print ("Name is valid")
+        print ("Name is valid!")
         return name
     else:
         print ("Name is invalid! Use letters from A to Z or a to z.")
         return validate_name(input("Please enter your name again "))
+
+
+def quit_all():
+    """
+    This function is called when Q-key is pressed on the keyboard 
+    it interrupts the whole process and 
+    moves the user to the welcome_message function where he can 
+    start the application from the beginning.
+    """
+    print("Are you sure you want to quit the process and return to the beggining")
+    confirm = input("Press Y to confirm or N to cancel and return to the process")
+    if confirm
+    welcome_message()
+
 
 welcome_message()
