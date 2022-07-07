@@ -106,12 +106,15 @@ def calculate_salary():
     """
     hourly_rate = float(input("Enter your rate per hour\n"))
     working_hours = float(input("Enter your weekly working hours\n"))
-    salary = hourly_rate * working_hours
+    
+    salary = (hourly_rate * working_hours)
+    if validate_salary(salary):
+        salary = "{:.2f}".format(salary)
     print(f"You work {working_hours} hours for {hourly_rate}/hour. Nice!")
     print(f'You earn {salary} quid')
 
     # return "{:.2f}".format(float(hourly_rate*working_hours))
-    return hourly_rate*working_hours
+    return salary
 
 
 def validate_salary(salary):
@@ -124,6 +127,7 @@ def validate_salary(salary):
     correctness.
     """
     try:
+        # Line below doesn't make a sense. The function returns Boolean.
         "{:.2f}".format(float(salary))
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
