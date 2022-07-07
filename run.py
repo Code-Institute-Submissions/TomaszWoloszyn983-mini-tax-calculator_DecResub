@@ -104,14 +104,19 @@ def calculate_salary():
     Hourly rate can be validated using validate_salary.
     Working hours must be validated especially dedicated function..
     """
-    hourly_rate = float(input("Enter your rate per hour\n"))
-    working_hours = float(input("Enter your weekly working hours\n"))
-    
-    salary = (hourly_rate * working_hours)
-    if validate_salary(salary):
-        salary = "{:.2f}".format(salary)
-    print(f"You work {working_hours} hours for {hourly_rate}/hour. Nice!")
-    print(f'You earn {salary} quid')
+    salary = 0
+    try:
+        hourly_rate = float(input("Enter your rate per hour\n"))
+        working_hours = float(input("Enter your weekly working hours\n"))
+        
+        salary = (hourly_rate * working_hours)
+        # if validate_salary(salary):
+        #     salary = "{:.2f}".format(salary) Not needed anymore. try/except replaces this
+        print(f"You work {working_hours} hours for {hourly_rate}/hour. Nice!")
+        print(f'You earn {salary} quid')
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again. \n")
+        calculate_salary()
 
     # return "{:.2f}".format(float(hourly_rate*working_hours))
     return salary
