@@ -139,6 +139,10 @@ def validate_salary(salary):
         
 
 def get_age():
+    """
+    Get age data from the user.
+    Validate the data if it is the int type data.
+    """
     age = 0
     try:
         age = int(input("Enter your age\n"))
@@ -148,10 +152,26 @@ def get_age():
         get_age()
     return age
 
+def is_in_relation():
+    """
+    Get information about formal relation from the user.
+    """
+    print("Are you living in a formal relation?")
+    relation = input('Press "Y" for Yes or "N" if you are not.\n')
+    if relation[0] == "Y" or relation[0] == "y":
+        print("You are in relation")
+        return True
+    elif relation[0] == "N" or relation[0] == "n":
+        print("You are not in a relation")
+        return False
+    else:
+        print("Invalid value. Please try again")
+        is_in_relation()
 
 def main():
     welcome_message()
     salary = request_salary()
     get_age()
+    is_in_relation()
 
 main()
