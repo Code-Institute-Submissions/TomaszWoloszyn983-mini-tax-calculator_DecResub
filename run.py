@@ -104,10 +104,11 @@ def calculate_salary():
     Hourly rate can be validated using validate_salary.
     Working hours must be validated especially dedicated function..
     """
-    hourly_rate = input("Enter your rate per hour\n")
-    working_hours = int(input("Enter your weekly working hours\n"))
+    hourly_rate = float(input("Enter your rate per hour\n"))
+    working_hours = float(input("Enter your weekly working hours\n"))
+    salary = hourly_rate * working_hours
     print(f"You work {working_hours} hours for {hourly_rate}/hour. Nice!")
-    print(f'You earn {hourly_rate*working_hours} quid')
+    print(f'You earn {salary} quid')
 
     # return "{:.2f}".format(float(hourly_rate*working_hours))
     return hourly_rate*working_hours
