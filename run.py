@@ -108,17 +108,14 @@ def calculate_salary():
     try:
         hourly_rate = float(input("Enter your rate per hour\n"))
         working_hours = float(input("Enter your weekly working hours\n"))
-        
-        salary = (hourly_rate * working_hours)
-        # if validate_salary(salary):
-        #     salary = "{:.2f}".format(salary) Not needed anymore. try/except replaces this
+
+        salary = "{:.2f}".format(hourly_rate * working_hours)
         print(f"You work {working_hours} hours for {hourly_rate}/hour. Nice!")
         print(f'You earn {salary} quid')
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         calculate_salary()
 
-    # return "{:.2f}".format(float(hourly_rate*working_hours))
     return salary
 
 
@@ -141,8 +138,20 @@ def validate_salary(salary):
     return True
         
 
+def get_age():
+    age = 0
+    try:
+        age = int(input("Enter your age\n"))
+        print(f'You are {age} years old')
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again. \n")
+        get_age()
+    return age
+
+
 def main():
     welcome_message()
     salary = request_salary()
+    get_age()
 
 main()
