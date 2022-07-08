@@ -36,7 +36,7 @@ def get_user_name():
     Display asking for the users name.
     Returns that name.
     """
-    return validate_name(input("Please enter your name or nick here: "))
+    return validate_name(input("Please enter your name or nick here: \n"))
 
 def validate_name(name):
     """
@@ -49,7 +49,7 @@ def validate_name(name):
         return name
     else:
         print ("Name is invalid! Use letters from A to Z or a to z.")
-        return validate_name(input("Please enter your name again "))
+        return validate_name(input("Please enter your name again \n"))
 
 
 def quit_all():
@@ -85,8 +85,7 @@ def request_salary():
     print('Please enter your salary in following format: 99.99 ')
     while True:
         print('Please enter your weekly salary or type "C" to calculate it.')
-        print('If you want to quit You can press "Q". ')
-        user_input = input()
+        user_input = input('If you want to quit You can press "Q". \n')
         if user_input.upper() == "Q":  
             quit_all()
         elif user_input.upper() == "C":
