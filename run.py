@@ -26,7 +26,7 @@ def welcome_message():
     print("\tWelcome to Mini Tax Calculator.\n")
     print("This application will help You qickly calculate your taxes")
     print("The application needs to ask you for few informations that are necessary for calculate your taxes")
-    print("All sensivite data are to be used for the calculations purposes only, and will never be shared")
+    print("All sensitive data are to be used for the calculations purposes only, and will never be shared")
     print("or used for any other purpose.\n")
 
 
@@ -174,13 +174,11 @@ class Person:
     users salary.
     These data are base to further calculations 
     """
-  def __init__(self, name, age, relation, salary):
-    self.name = name
-    self.age = age
-    self.relation = relation
-    self.salary = salary
-    
-
+    def __init__(self, name, age, relation, salary):
+        self.name = name
+        self.age = age
+        self.relation = relation
+        self.salary = salary
     
 
 def create_person():
@@ -188,20 +186,13 @@ def create_person():
     salary = request_salary()
     age = get_age()
     relation = is_in_relation()
-    print(f'{name} - {age} years old. Married: {relation}, Salary - {salary}')
     person = Person(name, age, relation, salary)
-    print("Thank you for filling in the form. Now we are going to process your data")
+    print(f'{person.name} - {person.age} years old. Married: {person.relation}, Salary - {person.salary}')
+
 
 def main():
     welcome_message()
     create_person()
+    print("Thank you for filling in the form. Now we are going to process your data")
 
 main()
-
-
-class Person:
-  def __init__(self, name, age, relation, salary):
-    self.name = name
-    self.age = age
-    self.salary = salary
-    self.relation = relation
