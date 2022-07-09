@@ -65,7 +65,7 @@ def quit_all():
         confirm = input('Press "Y" to quit or "N" to return\n')
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
-            welcome_message()
+            create_person()
             break
         elif confirm.upper() == "N":
             print("Return to the process\n")
@@ -145,7 +145,12 @@ def get_age():
     """
     age = 0
     try:
-        age = int(input("Enter your age\n"))
+        age = input("Enter your age\n")
+        if age == "Q" or age == "q":
+            quit_all()
+            break: create_person()
+            return
+        age = int(age)
         print(f'You are {age} years old')
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
@@ -182,6 +187,11 @@ class Person:
     
 
 def create_person():
+    """
+    An unfixed bug. Quit option inside each of data request functions interrupt only
+    the functions they are in, but they don't interrupt create_person function.
+    After the function is quit create_person function is resumed.
+    """
     name = get_user_name()
     salary = request_salary()
     age = get_age()
