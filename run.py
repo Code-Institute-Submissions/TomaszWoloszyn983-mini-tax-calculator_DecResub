@@ -28,15 +28,16 @@ def welcome_message():
     print("The application needs to ask you for few informations that are necessary for calculate your taxes")
     print("All sensivite data are to be used for the calculations purposes only, and will never be shared")
     print("or used for any other purpose.\n")
-    print(f"Welcome {get_user_name()} Thank You for using our application")
-    
+
 
 def get_user_name():
     """
     Display asking for the users name.
     Returns that name.
     """
-    return validate_name(input("Please enter your name or nick here: \n"))
+    name = validate_name(input("Please enter your name here: \n"))
+    print(f"Welcome {name} Thank You for using our application")
+    return name
 
 def validate_name(name):
     """
@@ -167,10 +168,40 @@ def is_in_relation():
         print("Invalid value. Please try again")
         is_in_relation()
 
+class Person:
+    """
+    Store users data; such as name, age, information about formal relations and 
+    users salary.
+    These data are base to further calculations 
+    """
+  def __init__(self, name, age, relation, salary):
+    self.name = name
+    self.age = age
+    self.relation = relation
+    self.salary = salary
+    
+
+    
+
+def create_person():
+    name = get_user_name()
+    salary = request_salary()
+    age = get_age()
+    relation = is_in_relation()
+    print(f'{name} - {age} years old. Married: {relation}, Salary - {salary}')
+    person = Person(name, age, relation, salary)
+    print("Thank you for filling in the form. Now we are going to process your data")
+
 def main():
     welcome_message()
-    salary = request_salary()
-    get_age()
-    is_in_relation()
+    create_person()
 
 main()
+
+
+class Person:
+  def __init__(self, name, age, relation, salary):
+    self.name = name
+    self.age = age
+    self.salary = salary
+    self.relation = relation
