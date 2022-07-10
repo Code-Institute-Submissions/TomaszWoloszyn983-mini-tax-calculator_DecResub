@@ -166,18 +166,19 @@ def is_in_relation():
     "Q" or "q" input will launch quit_all function that interrupts the process.
     """
     print("Are you living in a formal relation?")
-    relation = input('Press "Y" for Yes or "N" if you are not or choose Q to quit.\n')
-    if relation[0] == "Y" or relation[0] == "y":
-        print("You are in relation")
-        return True
-    elif relation[0] == "N" or relation[0] == "n":
-        print("You are not in a relation")
-        return False
-    elif relation == "Q" or relation == "q":
-        quit_all()
-    else:
-        print("Invalid value. Please try again")
-        is_in_relation()
+    while True:
+        relation = input('Press "Y" for Yes or "N" if you are not or choose Q to quit.\n')
+        if relation[0] == "Y" or relation[0] == "y":
+            print("You are in relation")
+            return True
+        elif relation[0] == "N" or relation[0] == "n":
+            print("You are not in a relation")
+            return False
+        elif relation == "Q" or relation == "q":
+            quit_all()
+        else:
+            print("Invalid value. Please try again")
+            is_in_relation()
 
 class Person:
     """
@@ -197,6 +198,11 @@ def create_person():
     An unfixed bug. Quit option inside each of data request functions interrupt only
     the functions they are in, but they don't interrupt create_person function.
     After the function is quit create_person function is resumed.
+
+    I'm propably going to have to modify this function and close every nested functions
+    in a loop. Each function has to call the next one in the queue. 
+    Quit option has to call the first function in the queue. 
+    Go up function will call the previous function in the queue.
     """
     name = get_user_name()
     salary = request_salary()

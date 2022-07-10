@@ -1,4 +1,4 @@
-# Tile Swap Puzzle.
+# Mini Tax Calculator.
 
 ## Welcome to my Project! 
 
@@ -9,18 +9,23 @@ a simple and easy calculator for calculating income taxes based on the Irish Rev
 
 ## Features
 
-
+![Flowchart image](documentation/images/tax_calc_flowchart.jpg)
  
 ## Future Features
   
 
 ## Technologies used:
   
+Python - an interpreted, object-oriented, high-level programming language
 
+## Unfixed buds:
+
+- Bug when quit_all function is called:
+![quit flowchart](documentation/images/Quit_flowchart.jpg)
 
 ## Testing
-Every page in this project was validation tested and it is responsive for every type of devices from desktop computers to mobile phone screen.
-More details about tesings are available in the separate testing section [here](testing.md) or in the dedicated file testing.md
+<!-- Every page in this project was validation tested and it is responsive for every type of devices from desktop computers to mobile phone screen.
+More details about tesings are available in the separate testing section [here](testing.md) or in the dedicated file testing.md -->
 
 
 
