@@ -1,31 +1,52 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Tile Swap Puzzle.
 
-Welcome Tomasz,
+## Welcome to my Project! 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
-## Reminders
+The subject of the project is a Tax Calculator. The purpose of the project is to create 
+a simple and easy calculator for calculating income taxes based on the Irish Revenue system.
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
+## Features
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
-1. `heroku/python`
-2. `heroku/nodejs`
+ 
+## Future Features
+  
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Technologies used:
+  
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
+## Testing
+Every page in this project was validation tested and it is responsive for every type of devices from desktop computers to mobile phone screen.
+More details about tesings are available in the separate testing section [here](testing.md) or in the dedicated file testing.md
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+
+## Deployment
+
+The site was deployed to GitHub pages. The steps to deploy are as follows: 
+  - In the [GitHub repository](https://github.com/TomaszWoloszyn983/mini-tax-calculator), navigate to the Settings tab 
+  - From the source section drop-down menu, select the **Main** Branch, then click "Save".
+  - The page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+
+The live link can be found [here](https://mini-tax-calculator.herokuapp.com/)
+
+### Local Deployment
+
+In order to make a local copy of this project, you can clone it. In your IDE Terminal, type the following command to clone my repository:
+
+- `git clone https://github.com/TomaszWoloszyn983/mini-tax-calculator.git`
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TomaszWoloszyn983/mini-tax-calculator)
+
+
+## References and Credits:
+
+
+## Credits:
+<!-- I would like to especially thank to Tim Nelson from Code Institute for his great support. -->

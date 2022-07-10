@@ -93,7 +93,7 @@ def request_salary():
             calculate_salary()
             break
         elif validate_salary(user_input):
-            print(f"We are going to calculate taxes for {user_input}")
+            print(f"Your salary is {user_input}")
             return user_input
             break
 
@@ -148,6 +148,7 @@ def get_age():
         age = input("Enter your age or choose Q to quit\n")
         if age == "Q" or age == "q":
             quit_all()
+            raise IndexError
         else:
             age = int(age)
             print(f'You are {age} years old')
@@ -159,15 +160,21 @@ def get_age():
 def is_in_relation():
     """
     Get information about formal relation from the user.
+    Any input that is a string that starts with the first character "n" or "N"
+    will be recognized as Yes.
+    Also any input that starts with "N" or "n" will be recognized as No.
+    "Q" or "q" input will launch quit_all function that interrupts the process.
     """
     print("Are you living in a formal relation?")
-    relation = input('Press "Y" for Yes or "N" if you are not.\n')
+    relation = input('Press "Y" for Yes or "N" if you are not or choose Q to quit.\n')
     if relation[0] == "Y" or relation[0] == "y":
         print("You are in relation")
         return True
     elif relation[0] == "N" or relation[0] == "n":
         print("You are not in a relation")
         return False
+    elif relation == "Q" or relation == "q":
+        quit_all()
     else:
         print("Invalid value. Please try again")
         is_in_relation()
