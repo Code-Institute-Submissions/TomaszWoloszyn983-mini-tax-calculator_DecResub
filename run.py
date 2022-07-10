@@ -145,16 +145,15 @@ def get_age():
     """
     age = 0
     try:
-        age = input("Enter your age\n")
+        age = input("Enter your age or choose Q to quit\n")
         if age == "Q" or age == "q":
             quit_all()
-            break: create_person()
-            return
-        age = int(age)
-        print(f'You are {age} years old')
+        else:
+            age = int(age)
+            print(f'You are {age} years old')
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
-        get_age()
+        age = get_age()
     return age
 
 def is_in_relation():
