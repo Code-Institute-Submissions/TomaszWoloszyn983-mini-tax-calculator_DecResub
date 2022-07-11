@@ -16,7 +16,8 @@ info = SHEET.worksheet('payee-data')
 
 data = info.get_all_values()
 
-print(data)
+# print(data) 
+# prints data from the google sheets
 
 def welcome_message():
     """
@@ -25,8 +26,7 @@ def welcome_message():
     """
     print("\tWelcome to Mini Tax Calculator.\n")
     print("This application will help You qickly calculate your taxes")
-    print("The application needs to ask you for few informations that are necessary for calculate your taxes")
-    print("All sensitive data are to be used for the calculations purposes only, and will never be shared")
+    print("This project will serve educational purposes only. No users data are not going to be stored or shared")
     print("or used for any other purpose.\n")
 
 
