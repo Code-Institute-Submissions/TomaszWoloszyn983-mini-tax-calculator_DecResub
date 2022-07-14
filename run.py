@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import time
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -21,13 +22,16 @@ data = info.get_all_values()
 
 def welcome_message():
     """
-    Dispay greetings, information about the application
+    Dispays greetings, information about the application
     and instruction for the user.
     """
-    print("\tWelcome to Mini Tax Calculator.\n")
-    print("This application will help You qickly calculate your taxes")
+    print("\n\n\tWelcome to Mini Tax Calculator!\n")
+    time.sleep(0.5)
+    print("This application will help you qickly calculate your taxes")
     print("This project will serve educational purposes only. No users data are not going to be stored or shared")
     print("or used for any other purpose.\n")
+    time.sleep(2)
+    input("Press Enter to continue...")
 
 
 def get_user_name():
@@ -200,6 +204,7 @@ def create_person():
     Quit option has to call the first function in the queue. 
     Go up function will call the previous function in the queue.
     """
+    print("\nThe application needs some information about you.")
     name = get_user_name()
     salary = request_salary()
     age = get_age()
