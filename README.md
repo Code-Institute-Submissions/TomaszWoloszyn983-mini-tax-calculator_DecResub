@@ -9,7 +9,7 @@ a simple and easy calculator for calculating income taxes based on the Irish Rev
 
 ## Features
 
-![Flowchart image](documentation/images/tax_calc_flowchart.jpg)
+![Flowchart image](documentation/images/tax_calc_flowchart_mSIze.jpg)
  
 ## Future Features
   

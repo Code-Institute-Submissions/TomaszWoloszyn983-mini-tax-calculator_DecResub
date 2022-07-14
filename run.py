@@ -110,19 +110,16 @@ def calculate_salary():
         working_hours = float(input("Enter your weekly working hours\n"))
 
         salary = "{:.2f}".format(hourly_rate * working_hours)
-        print(f"You work {working_hours} hours for {hourly_rate}/hour. Nice!")
-        print(f'You earn {salary} quid')
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         calculate_salary()
 
-    return salary
+    return validate_salary(salary)
 
 
 def validate_salary(salary):
     """
-    Check if input salary data is an integer or float type,
-    and it is entered in the right format
+    Checks input salary data is the right type (integer ot float) and correct format,
     The function returns validated salary value.
 
     The function rounds the value to the demanded format instead of checking its
@@ -148,7 +145,6 @@ def get_age():
         age = input("Enter your age or choose Q to quit\n")
         if age == "Q" or age == "q":
             quit_all()
-            raise IndexError
         else:
             age = int(age)
             print(f'You are {age} years old')
