@@ -45,8 +45,8 @@ def get_user_name():
 
 def validate_name(name):
     """
-    Validate input data
-    Check if the name doesn't contain other than
+    Validate input data.
+    Check if the name doesn't contain other than.
     letters. Accepted are only upper and lowercase letters.
     """
     if name.replace(" ", "").isalpha():
@@ -117,7 +117,6 @@ def calculate_salary():
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         calculate_salary()
-
     return validate_salary(salary)
 
 
@@ -213,9 +212,99 @@ def create_person():
     print(f'{person.name} - {person.age} years old. Married: {person.relation}, Salary - {person.salary}')
 
 
+def calculate_final_tax(salary, partnership):
+    base_tax = salary * 0.2
+    print(f"The base tax is: {base_tax}")
+    tax_credit = calculate_tax_credit(partnership)
+    usc = calculate_usc(salary)
+    prsi = calculate_prsi(salary)
+    final_tax = (base_tax - tax_credit) + prsi + usc
+    print(f"The final tax is: {final_tax}")
+    if final_tax > 0:
+        return final_tax
+    else:
+        return 0
+
+
+def calculate_tax_credit(partnership):
+    """
+    Tax credits are used to reduce the amount of tax you pay.
+    The Personal Tax Credit you get depends on whether you are:
+    single, married or in a civil partnership, widowed or a surviving civil partner,
+    separated, divorced or a former civil partner.
+    Base tax credit for any person is 1700, for a single person it is increase by 1700, 
+    for a married it is increased by 3400.
+    The result has to be divided by the number of weeks in a year
+    """
+    result = 1700
+    if(partnership):
+        result += 3400
+    else:
+        result += 3400
+    weekly_credit = result/52
+    print(f"Tax Credit is: {weekly_credit}")
+    return (weekly_credit * 100.0)/100.0
+
+def calculate_prsi(income):
+    """
+    Calculate one-sixth of your earnings over €352.01. €377- €352.01 = €24.99. Divided by 6 = €4.17.
+    Subtract this from the maximum credit of €12, giving you a credit of €7.83.
+    The basic PRSI charge is 4% of €377 = €15.08.
+    You will pay €7.25 PRSI weekly (€15.08 minus your €7.83 PRSI credit).
+    prsi_rate is an equivalent of percentage value of 4% in this case.
+    If the income is lower than 352 prsi is 0.
+    """
+    prsi = 0
+    if income > 352:
+        prsi_rate = 0.04
+        credit = (income - 352)/6
+        if(credit > 12):
+            credit = 12
+        else:
+            credit = 12-credit
+        charge = income * prsi_rate
+        prsi = charge - credit
+    print(f"Prsi is: {prsi}")
+    return (prsi * 100.0)/100.0
+
+def calculate_usc(income):
+    """
+    Calculates Universal Social Charge (USC)
+    It is set on the basis of the annual income. That's why the weekly income
+    is multiplied by the average number of weeks in a year (number of weeks per year somethimes 
+    can be different). 
+    Everythime users income is in the range that meets the if condition the the result value is
+    increased and the and the income value is decresed.
+    The last condition has to be nested in the previous one.
+    """
+    result = 0
+    annual_income = income * 52
+    if annual_income > 12012:
+        result += 12012*0.005
+        annual_income -= 12012
+    if annual_income > 9283:
+        result += 9283*0.02
+        annual_income -= 9283
+    if annual_income > 49357:
+        result += 49357*0.045
+        annual_income -= 49357
+        if annual_income > 0:
+            result += annual_income*0.08
+    print(f"USC = {result}")
+    # Return value below propably is going to have to be rounded
+    return result
+
+
 def main():
     welcome_message()
     create_person()
     print("Thank you for filling in the form. Now we are going to process your data")
+    calculate_final_tax(450, False)
 
 main()
+
+""""
+To name validation add first letter condition, and lenght condition
+
+To age validation add between 16 to 120 condition
+"""
