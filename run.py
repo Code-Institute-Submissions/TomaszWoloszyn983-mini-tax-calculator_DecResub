@@ -17,7 +17,7 @@ info = SHEET.worksheet('payee-data')
 
 data = info.get_all_values()
 
-# print(data) 
+print(data) 
 # prints data from the google sheets
 
 def welcome_message():
@@ -158,22 +158,22 @@ def get_age():
 
 def is_in_relation():
     """
-    Get information about formal relation from the user.
+    Get information about formal married from the user.
     Any input that is a string that starts with the first character "n" or "N"
     will be recognized as Yes.
     Also any input that starts with "N" or "n" will be recognized as No.
     "Q" or "q" input will launch quit_all function that interrupts the process.
     """
-    print("Are you living in a formal relation?")
+    print("Are you living in a formal marriage?")
     while True:
-        relation = input('Press "Y" for Yes or "N" if you are not or choose Q to quit.\n')
-        if relation[0] == "Y" or relation[0] == "y":
-            print("You are in relation")
+        married = input('Press "Y" for Yes or "N" if you are not or choose Q to quit.\n')
+        if married[0] == "Y" or married[0] == "y":
+            print("You are in married")
             return True
-        elif relation[0] == "N" or relation[0] == "n":
-            print("You are not in a relation")
+        elif married[0] == "N" or married[0] == "n":
+            print("You are not in a married")
             return False
-        elif relation == "Q" or relation == "q":
+        elif married == "Q" or married == "q":
             quit_all()
         else:
             print("Invalid value. Please try again")
@@ -185,10 +185,10 @@ class Person:
     users salary.
     These data are base to further calculations 
     """
-    def __init__(self, name, age, relation, salary):
+    def __init__(self, name, age, married, salary):
         self.name = name
         self.age = age
-        self.relation = relation
+        self.married = married
         self.salary = salary
     
 
@@ -207,9 +207,9 @@ def create_person():
     name = get_user_name()
     salary = request_salary()
     age = get_age()
-    relation = is_in_relation()
-    person = Person(name, age, relation, salary)
-    print(f'{person.name} - {person.age} years old. Married: {person.relation}, Salary - {person.salary}')
+    married = is_in_relation()
+    person = Person(name, age, married, salary)
+    print(f'{person.name} - {person.age} years old. Married: {person.married}, Salary - {person.salary}')
 
 
 def calculate_final_tax(salary, partnership):
@@ -219,10 +219,11 @@ def calculate_final_tax(salary, partnership):
     usc = calculate_usc(salary)
     prsi = calculate_prsi(salary)
     final_tax = (base_tax - tax_credit) + prsi + usc
-    print(f"The final tax is: {final_tax}")
     if final_tax > 0:
+        print(f"The final tax is: {final_tax}")
         return final_tax
     else:
+        print(f"The final tax is: {final_tax} which means it's 0")
         return 0
 
 
@@ -240,7 +241,7 @@ def calculate_tax_credit(partnership):
     if(partnership):
         result += 3400
     else:
-        result += 3400
+        result += 1700
     weekly_credit = result/52
     print(f"Tax Credit is: {weekly_credit}")
     return (weekly_credit * 100.0)/100.0
@@ -290,16 +291,16 @@ def calculate_usc(income):
         annual_income -= 49357
         if annual_income > 0:
             result += annual_income*0.08
-    print(f"USC = {result}")
+    print(f"USC = {result/52}")
     # Return value below propably is going to have to be rounded
-    return result
+    return (result/52 * 100.0)/100.0
 
 
 def main():
     welcome_message()
     create_person()
     print("Thank you for filling in the form. Now we are going to process your data")
-    calculate_final_tax(450, False)
+    calculate_final_tax(359, False)
 
 main()
 
