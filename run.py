@@ -94,7 +94,9 @@ def request_salary():
         if user_input.upper() == "Q":  
             quit_all()
         elif user_input.upper() == "C":
-            calculate_salary()
+# Validate_salary returns boolean this is causing a bug.
+            if validate_salary(calculate_salary()):
+                return calculate_salary()
             break
         elif validate_salary(user_input):
             print(f"Your salary is {user_input}")
@@ -112,12 +114,11 @@ def calculate_salary():
     try:
         hourly_rate = float(input("Enter your rate per hour\n"))
         working_hours = float(input("Enter your weekly working hours\n"))
-
         salary = "{:.2f}".format(hourly_rate * working_hours)
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         calculate_salary()
-    return validate_salary(salary)
+    return salary
 
 
 def validate_salary(salary):
@@ -210,6 +211,7 @@ def create_person():
     married = is_in_relation()
     person = Person(name, age, married, salary)
     print(f'{person.name} - {person.age} years old. Married: {person.married}, Salary - {person.salary}')
+    return person
 
 
 def calculate_final_tax(salary, partnership):
