@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import time
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -15,7 +16,7 @@ SHEET = GSPREAD_CLIENT.open('mini_tax_calculator_sheet')
 
 info = SHEET.worksheet('payee-data')
 data = info.get_all_values()
-print(data) 
+pprint(data) 
 # prints data from the google sheets
 
 def update_sheet(person):
@@ -24,7 +25,7 @@ def update_sheet(person):
     The order of the elements is important. It is : Name, Age, Salary, Tax
     """
     users_data = [person.name, person.age, person.married, person.salary, person.taxes]
-    print(f"Send {person.name}'s data to the sheetS")
+    print(f"Send {person.name}'s data to the sheet")
     info.append_row(users_data)
     print("Data sent!")
 
@@ -202,7 +203,7 @@ class Person:
     """
     taxes = 0
     def __init__(self, name, age, married, salary):
-        # This constructor doesn't have taxes parameter beacause it is used only
+        # This constructor doesn't have taxes parameter because it is used only
         # for taking data from the user and calculating taxes.
         self.name = name
         self.age = age
