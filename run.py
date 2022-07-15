@@ -185,7 +185,6 @@ def is_in_relation():
             quit_all()
         else:
             print("Invalid value. Please try again!")
-            # is_in_relation()
 
 class Person:
     """
@@ -193,11 +192,13 @@ class Person:
     users salary.
     These data are base to further calculations 
     """
+    taxes = 0
     def __init__(self, name, age, married, salary):
         self.name = name
         self.age = age
         self.married = married
         self.salary = salary
+        self.taxes
     
 
 def create_person():
@@ -217,16 +218,23 @@ def create_person():
     age = get_age()
     married = is_in_relation()
     person = Person(name, age, married, salary)
-    print(f'{person.name} - {person.age} years old. Married: {person.married}, Salary - {person.salary}')
     return person
 
 
 def calculate_final_tax(salary, partnership):
-    base_tax = salary * 0.2
+    """
+    Calculates the final tax value based on input users data and
+    calculation made by other functions such as calculate_tax_credit,
+    calculate_prsi, calculate_usc.
+    Returns the value of tax or if the value is negative it returns 0
+    (no tax)
+    """
+    sal = float(salary)
+    base_tax = sal * 0.2
     print(f"The base tax is: {base_tax}")
-    tax_credit = calculate_tax_credit(partnership)
-    usc = calculate_usc(salary)
-    prsi = calculate_prsi(salary)
+    tax_credit = calculate_tax_credit(bool(partnership))
+    usc = calculate_usc(sal)
+    prsi = calculate_prsi(sal)
     final_tax = (base_tax - tax_credit) + prsi + usc
     if final_tax > 0:
         print(f"The final tax is: {final_tax}")
@@ -307,9 +315,10 @@ def calculate_usc(income):
 
 def main():
     welcome_message()
-    create_person()
+    person = create_person()
     print("Thank you for filling in the form. Now we are going to process your data")
-    calculate_final_tax(359, False)
+    person.taxes = calculate_final_tax(person.salary, person.married)
+    print(f'{person.name} - {person.age} years old. Married: {person.married}, Salary - {person.salary}, Taxes - {person.taxes}')
 
 main()
 
