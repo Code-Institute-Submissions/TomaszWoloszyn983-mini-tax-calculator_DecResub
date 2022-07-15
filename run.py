@@ -97,14 +97,13 @@ def request_salary():
         if user_input.upper() == "Q":  
             quit_all()
         elif user_input.upper() == "C":
-# Validate_salary returns boolean this is causing a bug.
             result = calculate_salary()
             if validate_salary(result):
-                return result
+                return "{:.2f}".format(float(result))
             break
         elif validate_salary(user_input):
             print(f"Your salary is {user_input}")
-            return user_input
+            return "{:.2f}".format(float(user_input))
             break
 
 def calculate_salary():
@@ -122,7 +121,7 @@ def calculate_salary():
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         calculate_salary()
-    return salary
+    return "{:.2f}".format(float(salary))
 
 
 def validate_salary(salary):
@@ -232,15 +231,16 @@ def calculate_final_tax(salary, partnership):
     sal = float(salary)
     base_tax = sal * 0.2
     print(f"The base tax is: {base_tax}")
-    tax_credit = calculate_tax_credit(bool(partnership))
-    usc = calculate_usc(sal)
-    prsi = calculate_prsi(sal)
+    tax_credit = float(calculate_tax_credit(bool(partnership)))
+    usc = float(calculate_usc(sal))
+    prsi = float(calculate_prsi(sal))
     final_tax = (base_tax - tax_credit) + prsi + usc
+    rounded_tax = "{:.2f}".format(float(final_tax))
+    print(f"Base tax: {base_tax} Tax Credit: {tax_credit} USC: {usc} PRSI: {prsi} Final Tax: {rounded_tax}")
     if final_tax > 0:
-        print(f"The final tax is: {final_tax}")
-        return final_tax
+        return rounded_tax
     else:
-        print(f"The final tax is: {final_tax} which means it's 0")
+        print(f"Reduced to 0")
         return 0
 
 
@@ -260,8 +260,7 @@ def calculate_tax_credit(partnership):
     else:
         result += 1700
     weekly_credit = result/52
-    print(f"Tax Credit is: {weekly_credit}")
-    return (weekly_credit * 100.0)/100.0
+    return "{:.2f}".format(float(weekly_credit))
 
 def calculate_prsi(income):
     """
@@ -282,8 +281,7 @@ def calculate_prsi(income):
             credit = 12-credit
         charge = income * prsi_rate
         prsi = charge - credit
-    print(f"Prsi is: {prsi}")
-    return (prsi * 100.0)/100.0
+    return "{:.2f}".format(float(prsi))
 
 def calculate_usc(income):
     """
@@ -308,9 +306,7 @@ def calculate_usc(income):
         annual_income -= 49357
         if annual_income > 0:
             result += annual_income*0.08
-    print(f"USC = {result/52}")
-    # Return value below propably is going to have to be rounded
-    return (result/52 * 100.0)/100.0
+    return "{:.2f}".format(float(result/52))
 
 
 def main():
@@ -318,12 +314,7 @@ def main():
     person = create_person()
     print("Thank you for filling in the form. Now we are going to process your data")
     person.taxes = calculate_final_tax(person.salary, person.married)
-    print(f'{person.name} - {person.age} years old. Married: {person.married}, Salary - {person.salary}, Taxes - {person.taxes}')
+    print(f'User: {person.name} - {person.age} years old. Married: {person.married}, Salary: {person.salary}, Taxes: {person.taxes}')
 
 main()
 
-""""
-To name validation add first letter condition, and lenght condition
-
-To age validation add between 16 to 120 condition
-"""
