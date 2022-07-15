@@ -14,11 +14,20 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('mini_tax_calculator_sheet')
 
 info = SHEET.worksheet('payee-data')
-
 data = info.get_all_values()
-
 print(data) 
 # prints data from the google sheets
+
+def update_sheet(person):
+    """
+    Creates a list of data to be sent to the google sheet.
+    The order of the elements is important. It is : Name, Age, Salary, Tax
+    """
+    users_data = [person.name, person.age, person.married, person.salary, person.taxes]
+    print(f"Send {person.name}'s data to the sheetS")
+    info.append_row(users_data)
+    print("Data sent!")
+
 
 def welcome_message():
     """
@@ -90,7 +99,7 @@ def request_salary():
     calculated after typing C-key on keyboard.
     """
     print("\nWe need your weekly salary to calculate your taxes.")
-    print('Please enter your salary in following format: 99.99 ')
+    print('Please enter your salary in the following format: 99.99 ')
     while True:
         print('Please enter your weekly salary or type "C" to calculate it.')
         user_input = input('If you want to quit You can press "Q". \n')
@@ -193,6 +202,8 @@ class Person:
     """
     taxes = 0
     def __init__(self, name, age, married, salary):
+        # This constructor doesn't have taxes parameter beacause it is used only
+        # for taking data from the user and calculating taxes.
         self.name = name
         self.age = age
         self.married = married
@@ -315,6 +326,7 @@ def main():
     print("Thank you for filling in the form. Now we are going to process your data")
     person.taxes = calculate_final_tax(person.salary, person.married)
     print(f'User: {person.name} - {person.age} years old. Married: {person.married}, Salary: {person.salary}, Taxes: {person.taxes}')
+    update_sheet(person)
 
 main()
 
