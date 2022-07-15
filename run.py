@@ -26,11 +26,12 @@ def welcome_message():
     and instruction for the user.
     """
     print("\n\n\tWelcome to Mini Tax Calculator!\n")
-    time.sleep(0.5)
+    # time.sleep(0.5)
+
     print("This application will help you qickly calculate your taxes")
     print("This project will serve educational purposes only. No users data are not going to be stored or shared")
     print("or used for any other purpose.\n")
-    time.sleep(2)
+    # time.sleep(2)
     input("Press Enter to continue...")
 
 
@@ -46,14 +47,16 @@ def get_user_name():
 def validate_name(name):
     """
     Validate input data.
-    Check if the name doesn't contain other than.
-    letters. Accepted are only upper and lowercase letters.
+    Check if the name doesn't contain other than letters. 
+    Accepted are only upper and lowercase letters.
+    Also the name should contain at least three letter.
     """
-    if name.replace(" ", "").isalpha():
+    if name.replace(" ", "").isalpha() and len(name) >= 3:
         print ("Name is valid!")
         return name
+
     else:
-        print ("Name is invalid! Use letters from A to Z or a to z.")
+        print ("Name is invalid! The name should contain at least three letters from A to Z or a to z.")
         return validate_name(input("Please enter your name again \n"))
 
 
@@ -95,8 +98,9 @@ def request_salary():
             quit_all()
         elif user_input.upper() == "C":
 # Validate_salary returns boolean this is causing a bug.
-            if validate_salary(calculate_salary()):
-                return calculate_salary()
+            result = calculate_salary()
+            if validate_salary(result):
+                return result
             break
         elif validate_salary(user_input):
             print(f"Your salary is {user_input}")
@@ -105,7 +109,7 @@ def request_salary():
 
 def calculate_salary():
     """
-    Calculate salary based on multiplication of weekly working hours and
+    Calculate salary based on ratio of weekly working hours and
     hourly rate.
     Hourly rate can be validated using validate_salary.
     Working hours must be validated especially dedicated function..
@@ -149,6 +153,9 @@ def get_age():
         age = input("Enter your age or choose Q to quit\n")
         if age == "Q" or age == "q":
             quit_all()
+        elif int(age) < 16 or int(age) > 120:
+            print("The age must be in the range between 16 and 120 years old.")
+            raise ValueError
         else:
             age = int(age)
             print(f'You are {age} years old')
@@ -177,8 +184,8 @@ def is_in_relation():
         elif married == "Q" or married == "q":
             quit_all()
         else:
-            print("Invalid value. Please try again")
-            is_in_relation()
+            print("Invalid value. Please try again!")
+            # is_in_relation()
 
 class Person:
     """
