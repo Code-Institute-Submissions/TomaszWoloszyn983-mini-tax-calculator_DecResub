@@ -91,7 +91,7 @@ def quit_all():
         confirm = input('Press "Y" to quit or "N" to return\n')
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
-            create_person()
+            # create_person()
             return False
         elif confirm.upper() == "N":
             print("Return to the process\n")
@@ -171,8 +171,11 @@ def get_age():
         age = input("Enter your age or choose Q to quit\n")
         if age == "Q" or age == "q":
             # Here is the bug: Not submited quit function return null or false, so the whole get_age function returns.
-            # Maybe some if contition would help 
-            return quit_all()
+            # Maybe some if contition would help  !!! Fixed !!! 
+            # There is another bug though, quiting get_age makes the app skip to the is_married. create_person function must be stoped 
+            # and it must return False
+            if quit_all() == False:
+                return False
         elif int(age) < 16 or int(age) > 120:
             print("The age must be in the range between 16 and 120 years old.")
             raise ValueError
