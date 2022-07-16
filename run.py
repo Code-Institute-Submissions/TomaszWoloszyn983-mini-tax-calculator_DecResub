@@ -92,7 +92,7 @@ def quit_all():
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
             create_person()
-            break
+            return False
         elif confirm.upper() == "N":
             print("Return to the process\n")
             break
@@ -170,7 +170,9 @@ def get_age():
     try:
         age = input("Enter your age or choose Q to quit\n")
         if age == "Q" or age == "q":
-            quit_all()
+            # Here is the bug: Not submited quit function return null or false, so the whole get_age function returns.
+            # Maybe some if contition would help 
+            return quit_all()
         elif int(age) < 16 or int(age) > 120:
             print("The age must be in the range between 16 and 120 years old.")
             raise ValueError
@@ -213,7 +215,7 @@ class Person:
     taxes = 0
     def __init__(self, name, age, married, salary):
         # This constructor doesn't have taxes parameter because it is used only
-        # for taking data from the user and calculating taxes.
+        # for taking data from the user for calculating taxes in the next steps.
         self.name = name
         self.age = age
         self.married = married
@@ -337,22 +339,32 @@ def submit_data(person):
     submit = input('Choose "Y" nad press Enter to submit your data or choose "N" to discard the data and to repeat the process\n')
     while True:
         if submit.upper() == "Y":
+            # Returning false runs a new iteration in the function_manager loop
             print("Thank you for filling in the form. Now we are going to process your data")
-            break
+            return False
         elif submit.upper() == "N":
+            # Returning true breaks the loop in function_manager
             print("Process interrupted by the user\n\n")
-            create_person()
-            break
+            return True 
         else:
             print('Choose "Y" to submit or "N" to repeat the process\n')
 
-
-def main():
+def functions_manager():
+    flag = True
     welcome_message()
-    person = create_person()
-    submit_data(person)
+    while(flag):
+        person = create_person()
+        if create_person == False: continue
+        flag = submit_data(person)
     person.taxes = calculate_final_tax(person.salary, person.married)
     update_sheet(person)
+    print('Application complete!!!')
+
+
+
+def main():
+    functions_manager()
 
 main()
 
+# not submited Quit function called in get_age causes skipping getting age. It acctually returns false
