@@ -114,7 +114,8 @@ def request_salary():
         print('Please enter your weekly salary or type "C" to calculate it.')
         user_input = input('If you want to quit You can press "Q". \n')
         if user_input.upper() == "Q":  
-            quit_all()
+            if quit_all() == False:
+                return False
         elif user_input.upper() == "C":
             result = calculate_salary()
             if validate_salary(result):
@@ -169,7 +170,7 @@ def get_age():
     age = 0
     try:
         age = input("Enter your age or choose Q to quit\n")
-        if age == "Q" or age == "q":
+        if age.upper() == "Q" :
             # Here is the bug: Not submited quit function return null or false, so the whole get_age function returns.
             # Maybe some if contition would help  !!! Fixed !!! 
             # There is another bug though, quiting get_age makes the app skip to the is_married. create_person function must be stoped 
@@ -199,13 +200,14 @@ def is_in_relation():
     while True:
         married = input('Press "Y" for Yes or "N" if you are not or choose Q to quit.\n')
         if married[0] == "Y" or married[0] == "y":
-            print("You are in married")
+            print("You are married")
             return True
         elif married[0] == "N" or married[0] == "n":
-            print("You are not in a married")
+            print("You are not married")
             return False
-        elif married == "Q" or married == "q":
-            quit_all()
+        elif married.upper() == "Q":
+            if quit_all() == False:
+                return False
         else:
             print("Invalid value. Please try again!")
 
@@ -237,11 +239,18 @@ def create_person():
     Quit option has to call the first function in the queue. 
     Go up function will call the previous function in the queue.
     """
+    flag = True
     print("\nThe application needs some information about you.")
-    name = get_user_name()
-    salary = request_salary()
-    age = get_age()
-    married = is_in_relation()
+    while(flag == True):
+        print('Create person loop')
+        name = get_user_name()
+        salary = request_salary()
+        if salary == False: continue
+        age = get_age()
+        if age == False: continue
+        married = is_in_relation()
+        if married == False: continue
+        flag = False
     person = Person(name, age, married, salary)
     return person
 
@@ -356,8 +365,9 @@ def functions_manager():
     flag = True
     welcome_message()
     while(flag):
+        print('Function manager')
         person = create_person()
-        if create_person == False: continue
+        if person == False: continue
         flag = submit_data(person)
     person.taxes = calculate_final_tax(person.salary, person.married)
     update_sheet(person)
@@ -371,3 +381,5 @@ def main():
 main()
 
 # not submited Quit function called in get_age causes skipping getting age. It acctually returns false
+# calculate_tax function should be safe from null orNoneType errors
+# is_in_relation causes bug, because two options return False result.
