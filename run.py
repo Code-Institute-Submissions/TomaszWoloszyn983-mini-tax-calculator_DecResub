@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import time
 from pprint import pprint
+import os
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -30,6 +31,13 @@ def update_sheet(person):
     print("Data sent!")
 
 
+def clear():
+    """
+    Clear function to clean-up the terminal so things don't get messy.
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
+
 def welcome_message():
     """
     Dispays greetings, information about the application
@@ -43,6 +51,7 @@ def welcome_message():
     print("or used for any other purpose.\n")
     # time.sleep(2)
     input("Press Enter to continue...")
+    clear()
 
 
 def get_user_name():
@@ -242,7 +251,6 @@ def calculate_final_tax(salary, partnership):
     """
     sal = float(salary)
     base_tax = sal * 0.2
-    print(f"The base tax is: {base_tax}")
     tax_credit = float(calculate_tax_credit(bool(partnership)))
     usc = float(calculate_usc(sal))
     prsi = float(calculate_prsi(sal))
@@ -320,13 +328,30 @@ def calculate_usc(income):
             result += annual_income*0.08
     return "{:.2f}".format(float(result/52))
 
+def submit_data(person):
+    """
+    Dispalys users data and ask for submition the data and to pass them for the further precessing
+    or to not to submit and start the getting information again.
+    """
+    print(f'User: {person.name} - {person.age} years old. Married: {person.married}, Salary: {person.salary}')
+    submit = input('Choose "Y" nad press Enter to submit your data or choose "N" to discard the data and to repeat the process\n')
+    while True:
+        if submit.upper() == "Y":
+            print("Thank you for filling in the form. Now we are going to process your data")
+            break
+        elif submit.upper() == "N":
+            print("Process interrupted by the user\n\n")
+            create_person()
+            break
+        else:
+            print('Choose "Y" to submit or "N" to repeat the process\n')
+
 
 def main():
     welcome_message()
     person = create_person()
-    print("Thank you for filling in the form. Now we are going to process your data")
+    submit_data(person)
     person.taxes = calculate_final_tax(person.salary, person.married)
-    print(f'User: {person.name} - {person.age} years old. Married: {person.married}, Salary: {person.salary}, Taxes: {person.taxes}')
     update_sheet(person)
 
 main()
