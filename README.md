@@ -13,32 +13,34 @@ a simple and easy calculator for calculating income taxes based on the Irish Rev
 The application calculates the weekly tax. Which means that all input data should also base on the weekly period.
 
 After the application starts it asks the user for some details that are required for the tax to be calculated.
-- **Name:** The first question is about the users name. This information is only needed for the identification the user.
+- **Name:** The first question is about the users name. This information is only needed for identification the user.
 - **Salary:** Salary is the main factor tax calculation is based on. 
   * **Enter Salary:** The salary can be entered directly by writting its numeric, float value in the terminal, or 
     in a case that the user doesn't know it, it can be calculated.
   * **Calculate Salary:** To calculate salary the option "C" has to be chosen. Then a set of two question will be asked:
     A question about the hourly rate and the number of hours worked. The salary is calculated by multiplication the hourly rate and the number of hours
   * **Validation:** The next step is validation that follows after the salary is either entered or calculated. The validation check if the salary doesn't contain invalid symbol or negative numbers.
-- **Age:**
-- **Marriage/Partnership:**
-- **Tax Calculation:**
-  * **Tax Credit:**
-  * **USC:**
-  * **PRSI:**
-  * **Final Tax:**
-- **Update Google Sheet:**
+- **Age:** Although there is no minimum age at which you are liable to pay taxes, only people 16 uears old or older can be employed for full time work. That is why the application asks for this information. Validation function refuses any input that is lower than 16 and higher than 120 years old.
+    ![Age_validation](documentation/images/age_validation.jpg)
+- **Marriage/Partnership:** The main factor for calculating Tax Credit. Returns boolean value.
+- **Tax Calculation:** The main functionality of this application. Calculates the Taxes value based on Irish Revenue system, it uses following factors:
+  * **Tax Credit:** Tax relief. Dependend on marital status.
+  * **USC:** Universal Social Charge.
+  * **PRSI:** Pay Related Social Insurance.
+  * **Final Tax:** Calculates the sum of all taxes.
+- **Update Google Sheet:** The last functionality, that allows the user to send and archive his result.
 
 
 ![Flowchart image](documentation/images/tax_calc_flowchart.jpg)
  
 ## Future Features
-  
+  - Searching and displaying users data from google sheet.
+  - Calculating other type of taxes such as Capital Gains Tax.
 
 ## Technologies used:
   
-Python - an interpreted, object-oriented, high-level programming language
-Google Sheets - A web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
+ - **Python** - an interpreted, object-oriented, high-level programming language
+ - **Google Sheets** - A web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
 
 ## Unfixed buds:
 
@@ -92,6 +94,15 @@ If you are using an API like Google Sheets, then you must also include the instr
 Advise how they can get their own, steps necessary to get one, and then creating the creds.json file or env.py file and pasting in their keys.
 Also on Heroku config vars, which variable key/value is also needed to get it working on Heroku
 END OF IMPORTANT EXTRA SECTION !!!!!!!!!!!!!!!!!!!
+To create users own Google Sheet following steps must be taken.
+ - Create an account on Google Cloud Platform.
+ - Open new project.
+ - Choose APIs and Services option and click Library.
+ - Enable two APIs: 
+    * Google Drive Api that provides credentials for security access.
+      Select Create Credential option and create credentials for the application data. 
+      Create Service account, name it, mark as Editor (or owner) and select the JSon option. Click continue to download the credential file to your computer.
+    * Google Sheet allows to create you own sheet where your data can stored and analized.
 ------------------ !!!!!!!!!!!!!!!!!!! ------------------- !!!!!!!!!!!!!!!!!!!!!!!!! ---------------------
 
 For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
@@ -103,23 +114,7 @@ For Heroku deployment, follow these steps to connect your GitHub repository to t
 Alternatively, you can enable Automatic Deployments from within the Heroku app, by connecting it to your GitHub repository.
 
 The frontend terminal should now be connected and deployed to Heroku.
----------------------------------------------------------------------------------------------------------------------------------
-The site was deployed to GitHub pages. The steps to deploy are as follows: 
-  - In the [GitHub repository](https://github.com/TomaszWoloszyn983/mini-tax-calculator), navigate to the Settings tab 
-  - From the source section drop-down menu, select the **Main** Branch, then click "Save".
-  - The page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
 
-The live link can be found [here](https://mini-tax-calculator.herokuapp.com/)
-
-### Local Deployment
-
-In order to make a local copy of this project, you can clone it. In your IDE Terminal, type the following command to clone my repository:
-
-- `git clone https://github.com/TomaszWoloszyn983/mini-tax-calculator.git`
-
-Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TomaszWoloszyn983/mini-tax-calculator)
 
 
 ## References and Credits:
