@@ -18,7 +18,7 @@ SHEET = GSPREAD_CLIENT.open('mini_tax_calculator_sheet')
 info = SHEET.worksheet('payee-data')
 data = info.get_all_values()
 # prints data from the google sheets
-pprint(data) 
+pprint(data)
 
 def update_sheet(person):
     """
@@ -307,9 +307,11 @@ def calculate_tax_credit(partnership):
     weekly_credit = result/52
     return "{:.2f}".format(float(weekly_credit))
 
+
 def calculate_prsi(income):
     """
-    Calculate one-sixth of your earnings over €352.01. €377- €352.01 = €24.99. Divided by 6 = €4.17.
+    Calculate one-sixth of your earnings over €352.01. 
+    €377- €352.01 = €24.99. Divided by 6 = €4.17.
     Subtract this from the maximum credit of €12, giving you a credit of €7.83.
     The basic PRSI charge is 4% of €377 = €15.08.
     You will pay €7.25 PRSI weekly (€15.08 minus your €7.83 PRSI credit).
@@ -328,13 +330,16 @@ def calculate_prsi(income):
         prsi = charge - credit
     return "{:.2f}".format(float(prsi))
 
+
 def calculate_usc(income):
     """
     Calculates Universal Social Charge (USC)
-    It is set on the basis of the annual income. That's why the weekly income
-    is multiplied by the average number of weeks in a year (number of weeks per year somethimes 
-    can be different). 
-    Everythime users income is in the range that meets the if condition the the result value is
+    It is set on the basis of the annual income.
+    That's why the weekly income
+    is multiplied by the average number of weeks in a year
+    (number of weeks per year somethimes can be different).
+    Everythime users income is in the range that meets
+    the if condition the the result value is
     increased and the and the income value is decresed.
     The last condition has to be nested in the previous one.
     """
@@ -353,24 +358,31 @@ def calculate_usc(income):
             result += annual_income*0.08
     return "{:.2f}".format(float(result/52))
 
+
 def submit_data(person):
     """
-    Dispalys users data and ask for submition the data and to pass them for the further precessing
+    Dispalys users data and ask for submition the data 
+    and to pass them for the further precessing
     or to not to submit and start the getting information again.
     """
-    print(f'User: {person.name} - {person.age} years old. Married: {person.married}, Salary: {person.salary}')
-    submit = input('Choose "Y" nad press Enter to submit your data or choose "N" to discard the data and to repeat the process\n')
+    print(f'User: {person.name} - {person.age} years old.')
+    print(f'Married: {person.married}, Salary: {person.salary}')
+    print()
+    print()
+    submit = input('Enter "Y" to submit your data or choose "N" to discard data.\n')
     while True:
         if submit.upper() == "Y":
             # Returning false runs a new iteration in the function_manager loop
-            print("Thank you for filling in the form. Now we are going to process your data")
+            print("Thank you for filling in the form. ")
+            print("Now we are going to process your data")
             return False
         elif submit.upper() == "N":
             # Returning true breaks the loop in function_manager
             print("Process interrupted by the user\n\n")
-            return True 
+            return True
         else:
             print('Choose "Y" to submit or "N" to repeat the process\n')
+
 
 def functions_manager():
     flag = True
@@ -378,7 +390,8 @@ def functions_manager():
     while(flag):
         print('Function manager')
         person = create_person()
-        if person == False: continue
+        if person is False:
+            continue
         flag = submit_data(person)
     person.taxes = calculate_final_tax(person.salary, person.married)
     update_sheet(person)
