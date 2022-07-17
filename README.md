@@ -21,7 +21,9 @@ After the application starts it asks the user for some details that are required
     A question about the hourly rate and the number of hours worked. The salary is calculated by multiplication the hourly rate and the number of hours
   * **Validation:** The next step is validation that follows after the salary is either entered or calculated. The validation check if the salary doesn't contain invalid symbol or negative numbers.
 - **Age:** Although there is no minimum age at which you are liable to pay taxes, only people 16 uears old or older can be employed for full time work. That is why the application asks for this information. Validation function refuses any input that is lower than 16 and higher than 120 years old.
+
     ![Age_validation](documentation/images/age_validation.jpg)
+
 - **Marriage/Partnership:** The main factor for calculating Tax Credit. Returns boolean value.
 - **Tax Calculation:** The main functionality of this application. Calculates the Taxes value based on Irish Revenue system, it uses following factors:
   * **Tax Credit:** Tax relief. Dependend on marital status.
@@ -39,7 +41,8 @@ After the application starts it asks the user for some details that are required
 
 ## Technologies used:
   
- - **Python** - an interpreted, object-oriented, high-level programming language
+ - **Python** - an interpreted, object-oriented, high-level programming language.
+ - **Google Drive API** - allows you to create apps that leverage Google Drive cloud storage.
  - **Google Sheets** - A web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
 
 ## Unfixed buds:
@@ -100,9 +103,12 @@ To create users own Google Sheet following steps must be taken.
  - Choose APIs and Services option and click Library.
  - Enable two APIs: 
     * Google Drive Api that provides credentials for security access.
-      Select Create Credential option and create credentials for the application data. 
-      Create Service account, name it, mark as Editor (or owner) and select the JSon option. Click continue to download the credential file to your computer.
+      > Select Create Credential option and create credentials for the application data. 
+      > Create Service account, name it, mark as Editor (or owner) and select the JSon option. Click continue to download the credential file to your computer. Add the file the   Mini_Tax_Talculator workspace.
+
     * Google Sheet allows to create you own sheet where your data can stored and analized.
+      > To achive this create a new sheet. Copy client_email from credential file in your workspace. Select "Share" option in your sheet and paste the client_email in the diagram.
+
 ------------------ !!!!!!!!!!!!!!!!!!! ------------------- !!!!!!!!!!!!!!!!!!!!!!!!! ---------------------
 
 For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
