@@ -17,8 +17,8 @@ SHEET = GSPREAD_CLIENT.open('mini_tax_calculator_sheet')
 
 info = SHEET.worksheet('payee-data')
 data = info.get_all_values()
-pprint(data) 
 # prints data from the google sheets
+pprint(data) 
 
 def update_sheet(person):
     """
@@ -47,7 +47,10 @@ def welcome_message():
     # time.sleep(0.5)
 
     print("This application will help you qickly calculate your taxes")
-    print("This project will serve educational purposes only. No users data are not going to be stored or shared")
+    print("The application will ask you for some information that are")
+    print("necessary for making calculations")
+    print("This project will serve educational purposes only.")
+    print("No users data are to be stored, shared")
     print("or used for any other purpose.\n")
     # time.sleep(2)
     input("Press Enter to continue...")
@@ -91,7 +94,6 @@ def quit_all():
         confirm = input('Press "Y" to quit or "N" to return\n')
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
-            # create_person()
             return False
         elif confirm.upper() == "N":
             print("Return to the process\n")
@@ -108,11 +110,11 @@ def request_salary():
     If the user doesn't know the value of his salary it can be 
     calculated after typing C-key on keyboard.
     """
-    print("\nWe need your weekly salary to calculate your taxes.")
+    
     print('Please enter your salary in the following format: 99.99 ')
     while True:
-        print('Please enter your weekly salary or type "C" to calculate it.')
-        user_input = input('If you want to quit You can press "Q". \n')
+        print('Please enter your weekly salary or choose option "C" to calculate it.')
+        user_input = input('If you want to quit You can choose option "Q". \n')
         if user_input.upper() == "Q":  
             if quit_all() == False:
                 return False
@@ -122,7 +124,6 @@ def request_salary():
                 return "{:.2f}".format(float(result))
             break
         elif validate_salary(user_input):
-            print(f"Your salary is {user_input}")
             return "{:.2f}".format(float(user_input))
             break
 
@@ -152,9 +153,19 @@ def validate_salary(salary):
     The function rounds the value to the demanded format instead of checking its
     correctness.
     """
+    # myError = ValueError('a should be a positive number')
     try:
-        # Line below doesn't make a sense. The function returns Boolean.
-        "{:.2f}".format(float(salary))
+        # Trying to prevent inserting a negative input
+        print('Validate salary runs')
+        # temp = "{:.2f}".format(float(salary))
+        temp = float(salary)
+        # if temp <= 0:
+        #     print('Salary is negative!')
+        #     raise myError
+        assert temp > 0
+    except AssertionError:
+        print("Number is negative")
+        calculate_salary()
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
@@ -171,10 +182,6 @@ def get_age():
     try:
         age = input("Enter your age or choose Q to quit\n")
         if age.upper() == "Q" :
-            # Here is the bug: Not submited quit function return null or false, so the whole get_age function returns.
-            # Maybe some if contition would help  !!! Fixed !!! 
-            # There is another bug though, quiting get_age makes the app skip to the is_married. create_person function must be stoped 
-            # and it must return False
             if quit_all() == False:
                 return False
         elif int(age) < 16 or int(age) > 120:
@@ -188,7 +195,7 @@ def get_age():
         age = get_age()
     return age
 
-def is_in_relation():
+def is_married():
     """
     Get information about formal married from the user.
     Any input that is a string that starts with the first character "n" or "N"
@@ -249,7 +256,7 @@ def create_person():
         if salary == False: continue
         age = get_age()
         if age == False: continue
-        married = is_in_relation()
+        married = is_married()
         print(f'Married returns {married}')
         if married == 'quit': continue
         flag = False
@@ -371,7 +378,6 @@ def functions_manager():
     while(flag):
         print('Function manager')
         person = create_person()
-        print(f"Person returns :{person}")
         if person == False: continue
         flag = submit_data(person)
     person.taxes = calculate_final_tax(person.salary, person.married)
@@ -379,12 +385,9 @@ def functions_manager():
     print('Application complete!!!')
 
 
-
 def main():
     functions_manager()
 
 main()
 
-# not submited Quit function called in get_age causes skipping getting age. It acctually returns false
-# calculate_tax function should be safe from null orNoneType errors
-# is_in_relation causes bug, because two options return False result.
+# Bug in validation negative salary input
