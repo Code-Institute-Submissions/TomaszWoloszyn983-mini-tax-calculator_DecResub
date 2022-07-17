@@ -195,6 +195,7 @@ def is_in_relation():
     will be recognized as Yes.
     Also any input that starts with "N" or "n" will be recognized as No.
     "Q" or "q" input will launch quit_all function that interrupts the process.
+    The second elif should not return false. It must return a different value.
     """
     print("Are you living in a formal marriage?")
     while True:
@@ -207,7 +208,7 @@ def is_in_relation():
             return False
         elif married.upper() == "Q":
             if quit_all() == False:
-                return False
+                return 'quit'
         else:
             print("Invalid value. Please try again!")
 
@@ -242,16 +243,19 @@ def create_person():
     flag = True
     print("\nThe application needs some information about you.")
     while(flag == True):
-        print('Create person loop')
+        print(f'Create person loop, flag is {flag}')
         name = get_user_name()
         salary = request_salary()
         if salary == False: continue
         age = get_age()
         if age == False: continue
         married = is_in_relation()
-        if married == False: continue
+        print(f'Married returns {married}')
+        if married == 'quit': continue
         flag = False
+        print(f'Finish loop. Flag is {flag}')
     person = Person(name, age, married, salary)
+    print('Create_person funtion completed!')
     return person
 
 
@@ -367,6 +371,7 @@ def functions_manager():
     while(flag):
         print('Function manager')
         person = create_person()
+        print(f"Person returns :{person}")
         if person == False: continue
         flag = submit_data(person)
     person.taxes = calculate_final_tax(person.salary, person.married)
