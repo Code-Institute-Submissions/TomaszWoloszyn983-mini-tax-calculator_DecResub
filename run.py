@@ -18,7 +18,7 @@ SHEET = GSPREAD_CLIENT.open('mini_tax_calculator_sheet')
 info = SHEET.worksheet('payee-data')
 data = info.get_all_values()
 # prints data from the google sheets
-pprint(data)
+# pprint(data)
 
 def update_sheet(person):
     """
@@ -94,6 +94,7 @@ def quit_all():
         confirm = input('Press "Y" to quit or "N" to return\n')
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
+            clear()
             return False
         elif confirm.upper() == "N":
             print("Return to the process\n")
@@ -110,11 +111,12 @@ def request_salary():
     If the user doesn't know the value of his salary it can be 
     calculated after typing C-key on keyboard.
     """
-    
+    time.sleep(1)
+    clear()
     print('Please enter your salary in the following format: 99.99 ')
     while True:
-        print('Please enter your weekly salary or choose option "C" to calculate it.')
-        user_input = input('If you want to quit You can choose option "Q". \n')
+        print('Please enter your weekly salary or select option "C" to calculate it.')
+        user_input = input('If you want to quit You can select option "Q". \n')
         if user_input.upper() == "Q":  
             if quit_all() == False:
                 return False
@@ -178,9 +180,11 @@ def get_age():
     Get age data from the user.
     Validate the data if it is the int type data.
     """
+    time.sleep(1)
+    clear()
     age = 0
     try:
-        age = input("Enter your age or choose Q to quit\n")
+        age = input("Enter your age or select Q to quit\n")
         if age.upper() == "Q" :
             if quit_all() == False:
                 return False
@@ -204,14 +208,18 @@ def is_married():
     "Q" or "q" input will launch quit_all function that interrupts the process.
     The second elif should not return false. It must return a different value.
     """
+    time.sleep(1)
+    clear()
     print("Are you living in a formal marriage?")
     while True:
-        married = input('Press "Y" for Yes or "N" if you are not or choose Q to quit.\n')
+        married = input('Press "Y" for Yes or "N" if you are not or select Q to quit.\n')
         if married[0] == "Y" or married[0] == "y":
             print("You are married")
+            time.sleep(1)
             return True
         elif married[0] == "N" or married[0] == "n":
             print("You are not married")
+            time.sleep(1)
             return False
         elif married.upper() == "Q":
             if quit_all() == False:
@@ -250,19 +258,17 @@ def create_person():
     flag = True
     print("\nThe application needs some information about you.")
     while(flag == True):
-        print(f'Create person loop, flag is {flag}')
         name = get_user_name()
         salary = request_salary()
         if salary == False: continue
         age = get_age()
         if age == False: continue
         married = is_married()
-        print(f'Married returns {married}')
         if married == 'quit': continue
         flag = False
-        print(f'Finish loop. Flag is {flag}')
+    clear()
     person = Person(name, age, married, salary)
-    print('Create_person funtion completed!')
+    print('All data requests completed!')
     return person
 
 
@@ -365,11 +371,11 @@ def submit_data(person):
     and to pass them for the further precessing
     or to not to submit and start the getting information again.
     """
-    print(f'User: {person.name} - {person.age} years old.')
-    print(f'Married: {person.married}, Salary: {person.salary}')
-    print()
-    print()
-    submit = input('Enter "Y" to submit your data or choose "N" to discard data.\n')
+    print(f'User: {person.name}:')
+    print(f'\t{person.age} years old,')
+    print(f'\tMarried: {person.married},')
+    print(f'\tSalary: {person.salary}.')
+    submit = input('Enter "Y" to submit your data or select "N" to discard data.\n')
     while True:
         if submit.upper() == "Y":
             # Returning false runs a new iteration in the function_manager loop
@@ -388,7 +394,6 @@ def functions_manager():
     flag = True
     welcome_message()
     while(flag):
-        print('Function manager')
         person = create_person()
         if person is False:
             continue
@@ -403,4 +408,5 @@ def main():
 
 main()
 
-# Bug in validation negative salary input
+# All sleep and clear option can be called in create_person function
+

@@ -1,5 +1,7 @@
 # Mini Tax Calculator.
 
+![Title image](documentation/images/am_i_responsive.jpg)
+
 ## Welcome to my Project! 
 
 
@@ -49,8 +51,8 @@ After the application starts it asks the user for some details that are required
 
 
 ## Testing
-<!-- Every page in this project was validation tested and it is responsive for every type of devices from desktop computers to mobile phone screen.
-More details about tesings are available in the separate testing section [here](testing.md) or in the dedicated file testing.md -->
+  The applications code was tested using Pep8 code validator: http://pep8online.com/.
+  More details about tesings are available in the separate testing section here or in the dedicated file testing.md [here](testing.md).
 
 
 
@@ -97,16 +99,21 @@ If you are using an API like Google Sheets, then you must also include the instr
 Advise how they can get their own, steps necessary to get one, and then creating the creds.json file or env.py file and pasting in their keys.
 Also on Heroku config vars, which variable key/value is also needed to get it working on Heroku
 END OF IMPORTANT EXTRA SECTION !!!!!!!!!!!!!!!!!!!
+
 To create users own Google Sheet following steps must be taken.
  - Create an account on Google Cloud Platform.
  - Open new project.
  - Choose APIs and Services option and click Library.
  - Enable two APIs: 
     * Google Drive Api that provides credentials for security access.
+      
+      Instruction how to create and setup google sheet with the program. 
       > Select Create Credential option and create credentials for the application data. 
       > Create Service account, name it, mark as Editor (or owner) and select the JSon option. Click continue to download the credential file to your computer. Add the file the   Mini_Tax_Talculator workspace.
 
     * Google Sheet allows to create you own sheet where your data can stored and analized.
+      
+      Instruction how to create and setup google sheet with the program. 
       > To achive this create a new sheet. Copy client_email from credential file in your workspace. Select "Share" option in your sheet and paste the client_email in the diagram.
 
 ------------------ !!!!!!!!!!!!!!!!!!! ------------------- !!!!!!!!!!!!!!!!!!!!!!!!! ---------------------
