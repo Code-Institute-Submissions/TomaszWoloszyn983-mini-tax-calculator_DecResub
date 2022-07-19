@@ -3,7 +3,10 @@ from google.oauth2.service_account import Credentials
 import time
 from pprint import pprint
 import os
+import colorama
 from colorama import Fore, Back, Style
+
+colorama.init(autoreset=True)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -92,7 +95,7 @@ def quit_all():
     """
     print("Are you sure you want to quit the process?")
     while True:
-        confirm = input('Press "Y" to quit or "N" to return\n')
+        confirm = input(f'Press {Back.YELLOW}{Fore.BLACK}"Y"{Style.RESET_ALL} to quit or {Back.YELLOW}{Fore.BLACK}"N"{Style.RESET_ALL} to return\n')
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
             clear()
@@ -114,8 +117,8 @@ def request_salary():
     """
     print('Please enter your salary in the following format: 99.99 ')
     while True:
-        print('Please enter your weekly salary or select option "C" to calculate it.')
-        user_input = input('If you want to quit You can select option "Q". \n')
+        print(f'Please enter your weekly {Back.YELLOW}{Fore.BLACK} salary {Style.RESET_ALL} or select option {Back.YELLOW}{Fore.BLACK}"C"{Style.RESET_ALL} to calculate it.')
+        user_input = input(f'If you want to quit You can select option {Back.YELLOW}{Fore.BLACK}"Q"{Style.RESET_ALL}.\n')
         if user_input.upper() == "Q":  
             if quit_all() == False:
                 return False
@@ -154,15 +157,9 @@ def validate_salary(salary):
     The function rounds the value to the demanded format instead of checking its
     correctness.
     """
-    # myError = ValueError('a should be a positive number')
     try:
-        # Trying to prevent inserting a negative input
         print('Validate salary runs')
-        # temp = "{:.2f}".format(float(salary))
         temp = float(salary)
-        # if temp <= 0:
-        #     print('Salary is negative!')
-        #     raise myError
         assert temp > 0
     except AssertionError:
         print("Number is negative")
@@ -181,7 +178,7 @@ def get_age():
     """
     age = 0
     try:
-        age = input("Enter your age or select Q to quit\n")
+        age = input(f'Enter your {Back.YELLOW}{Fore.BLACK}age{Style.RESET_ALL} or select "{Back.YELLOW}{Fore.BLACK}Q{Style.RESET_ALL}" to quit\n')
         if age.upper() == "Q" :
             if quit_all() == False:
                 return False
@@ -207,7 +204,7 @@ def is_married():
     """
     print("Are you living in a formal marriage?")
     while True:
-        married = input('Press "Y" for Yes or "N" if you are not or select Q to quit.\n')
+        married = input(f'Press "{Back.YELLOW}{Fore.BLACK} Y {Style.RESET_ALL}" for Yes or "{Back.YELLOW}{Fore.BLACK} N {Style.RESET_ALL}" if you are not or select Q to quit.\n')
         if married[0] == "Y" or married[0] == "y":
             print("You are married")
             return True
@@ -376,7 +373,7 @@ def submit_data(person):
     print(f'\t{person.age} years old,')
     print(f'\tMarried: {person.married},')
     print(f'\tSalary: {person.salary}.')
-    submit = input('Enter "Y" to submit your data or select "N" to discard data.\n')
+    submit = input(f'Enter "{Back.YELLOW}{Fore.BLACK} Y {Style.RESET_ALL}" to submit your data or select "{Back.YELLOW}{Fore.BLACK} N {Style.RESET_ALL}" to discard data.\n')
     while True:
         if submit.upper() == "Y":
             # Returning false runs a new iteration in the function_manager loop
@@ -388,7 +385,7 @@ def submit_data(person):
             print("Process interrupted by the user\n\n")
             return True
         else:
-            submit = input('Enter "Y" to submit or "N" to enter new data.\n')
+            submit = input('Enter " Y " to submit or "N" to enter new data.\n')
 
 
 def functions_manager():
@@ -402,16 +399,17 @@ def functions_manager():
     person.taxes = calculate_final_tax(person.salary, person.married)
     update_sheet(person)
     print('Application complete!!!')
-    renew = input('\nWould You like to make a new calculation Y/N\n')
+    renew = input(f'\nWould You like to make a new calculation? {Back.YELLOW}{Fore.BLACK}Y/N{Style.RESET_ALL}\n')
     while True:
         if renew.upper() == "Y":
             functions_manager()
             break
         elif renew.upper() == "N":
+            clear()
             print("\n\tThank You. Have a nice day!\n")
             break
         else:
-            renew = input('Enter "Y" to start a new Calculation or "N" to quit.\n')
+            renew = input(f'Enter "{Back.YELLOW}{Fore.BLACK} Y {Style.RESET_ALL}" to start a new Calculation or "{Back.YELLOW}{Fore.BLACK} N {Style.RESET_ALL}" to quit.\n')
 
 
 def main():
