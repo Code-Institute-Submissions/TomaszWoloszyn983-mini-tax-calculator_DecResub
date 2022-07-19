@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 import time
 from pprint import pprint
 import os
+from colorama import Fore, Back, Style
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -111,8 +112,6 @@ def request_salary():
     If the user doesn't know the value of his salary it can be 
     calculated after typing C-key on keyboard.
     """
-    time.sleep(1)
-    clear()
     print('Please enter your salary in the following format: 99.99 ')
     while True:
         print('Please enter your weekly salary or select option "C" to calculate it.')
@@ -180,8 +179,6 @@ def get_age():
     Get age data from the user.
     Validate the data if it is the int type data.
     """
-    time.sleep(1)
-    clear()
     age = 0
     try:
         age = input("Enter your age or select Q to quit\n")
@@ -208,18 +205,14 @@ def is_married():
     "Q" or "q" input will launch quit_all function that interrupts the process.
     The second elif should not return false. It must return a different value.
     """
-    time.sleep(1)
-    clear()
     print("Are you living in a formal marriage?")
     while True:
         married = input('Press "Y" for Yes or "N" if you are not or select Q to quit.\n')
         if married[0] == "Y" or married[0] == "y":
             print("You are married")
-            time.sleep(1)
             return True
         elif married[0] == "N" or married[0] == "n":
             print("You are not married")
-            time.sleep(1)
             return False
         elif married.upper() == "Q":
             if quit_all() == False:
@@ -258,15 +251,23 @@ def create_person():
     flag = True
     print("\nThe application needs some information about you.")
     while(flag == True):
+        clear()
         name = get_user_name()
+        time.sleep(1)
+        clear()
         salary = request_salary()
         if salary == False: continue
+        time.sleep(1)
+        clear()
         age = get_age()
         if age == False: continue
+        time.sleep(1)
+        clear()
         married = is_married()
         if married == 'quit': continue
+        time.sleep(1)
+        clear()
         flag = False
-    clear()
     person = Person(name, age, married, salary)
     print('All data requests completed!')
     return person
@@ -380,14 +381,14 @@ def submit_data(person):
         if submit.upper() == "Y":
             # Returning false runs a new iteration in the function_manager loop
             print("Thank you for filling in the form. ")
-            print("Now we are going to process your data")
+            print("Now we are going to process your data.")
             return False
         elif submit.upper() == "N":
             # Returning true breaks the loop in function_manager
             print("Process interrupted by the user\n\n")
             return True
         else:
-            submit = input('Enter "Y" to submit or "N" to repeat the process\n')
+            submit = input('Enter "Y" to submit or "N" to enter new data.\n')
 
 
 def functions_manager():
@@ -418,5 +419,5 @@ def main():
 
 main()
 
-# All sleep and clear option can be called in create_person function
+# Remember to prolong sleep time
 
