@@ -115,9 +115,9 @@ def request_salary():
     If the user doesn't know the value of his salary it can be 
     calculated after typing C-key on keyboard.
     """
-    print('Please enter your salary in the following format: 99.99 ')
     while True:
-        print(f'Please enter your weekly {Back.YELLOW}{Fore.BLACK} salary {Style.RESET_ALL} or select option {Back.YELLOW}{Fore.BLACK}"C"{Style.RESET_ALL} to calculate it.')
+        print(f'Please enter your weekly {Back.YELLOW}{Fore.BLACK}salary{Style.RESET_ALL} in the following format: 99.99')
+        print(f'or select option {Back.YELLOW}{Fore.BLACK}"C"{Style.RESET_ALL} to calculate it.')
         user_input = input(f'If you want to quit You can select option {Back.YELLOW}{Fore.BLACK}"Q"{Style.RESET_ALL}.\n')
         if user_input.upper() == "Q":  
             if quit_all() == False:
@@ -143,6 +143,9 @@ def calculate_salary():
         hourly_rate = float(input("Enter your rate per hour\n"))
         working_hours = float(input("Enter your weekly working hours\n"))
         salary = "{:.2f}".format(hourly_rate * working_hours)
+        if (hourly_rate < 0) or (working_hours < 0):
+            print('Negative value!')
+            raise ValueError 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         calculate_salary()
@@ -162,8 +165,8 @@ def validate_salary(salary):
         temp = float(salary)
         assert temp > 0
     except AssertionError:
-        print("Number is negative")
-        calculate_salary()
+        print("This value can not be negative")
+        request_salary()
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
