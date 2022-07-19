@@ -387,7 +387,7 @@ def submit_data(person):
             print("Process interrupted by the user\n\n")
             return True
         else:
-            print('Choose "Y" to submit or "N" to repeat the process\n')
+            submit = input('Enter "Y" to submit or "N" to repeat the process\n')
 
 
 def functions_manager():
@@ -401,6 +401,16 @@ def functions_manager():
     person.taxes = calculate_final_tax(person.salary, person.married)
     update_sheet(person)
     print('Application complete!!!')
+    renew = input('\nWould You like to make a new calculation Y/N\n')
+    while True:
+        if renew.upper() == "Y":
+            functions_manager()
+            break
+        elif renew.upper() == "N":
+            print("\n\tThank You. Have a nice day!\n")
+            break
+        else:
+            renew = input('Enter "Y" to start a new Calculation or "N" to quit.\n')
 
 
 def main():
