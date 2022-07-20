@@ -7,7 +7,7 @@
 
 # get_name function testing:
 
-Invalid input is refused by validator and the application repeats the request as many times as the validation succeeds.
+Invalid input is refused by validator and the application repeats the request until the validation succeeds.
 
 ![Name_validation](documentation/testing/name_1.jpg)
 
