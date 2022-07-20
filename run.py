@@ -49,6 +49,7 @@ def welcome_message():
     Dispays greetings, information about the application
     and instruction for the user.
     """
+    clear()
     print("\n\n\tWelcome to Mini Tax Calculator!\n")
     # time.sleep(0.5)
 
@@ -99,9 +100,9 @@ def quit_all():
     """
     print("Are you sure you want to quit the process?")
     while True:
-        confirm = input(f'Press "{Back.YELLOW}{Fore.BLACK} Y '
+        confirm = input(f'Press "{Back.LIGHTYELLOW_EX}{Fore.BLACK} Y '
                         f'{Style.RESET_ALL}" to quit or "'
-                        f'{Back.YELLOW}{Fore.BLACK} N '
+                        f'{Back.LIGHTYELLOW_EX}{Fore.BLACK} N '
                         f'{Style.RESET_ALL}" to return\n')
         if confirm.upper() == "Y":
             print("Process interrupted by the user\n\n")
@@ -123,12 +124,12 @@ def request_salary():
     calculated after typing C-key on keyboard.
     """
     while True:
-        print(f'Please enter your weekly {Back.YELLOW}{Fore.BLACK}'
+        print(f'Please enter your weekly {Back.LIGHTYELLOW_EX}{Fore.BLACK}'
               f'salary{Style.RESET_ALL} in the following format: 99.99')
-        print(f'or select option "{Back.YELLOW}{Fore.BLACK} C '
+        print(f'or select option "{Back.LIGHTYELLOW_EX}{Fore.BLACK} C '
               f'{Style.RESET_ALL}" to calculate it.')
         user_input = input('If you want to quit You can select option '
-                           f'"{Back.YELLOW}{Fore.BLACK} Q '
+                           f'"{Back.LIGHTYELLOW_EX}{Fore.BLACK} Q '
                            f'{Style.RESET_ALL}".\n')
         if user_input.upper() == "Q":
             if quit_all() is False:
@@ -174,16 +175,18 @@ def validate_salary(salary):
     checking its correctness.
     """
     try:
-        print('Validate salary runs')
         temp = float(salary)
-        assert temp > 0
-    except AssertionError:
-        print("This value can not be negative")
-        request_salary()
+        if temp <= 0:
+            print("This value must be higher that 0.")
+            raise ValueError
+        # assert temp < 0
+    # except AssertionError:
+    #     print("This value must be higher that 0.")
+    #     return False
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
-    print(f"Your salary {salary} was successfully validated ")
+    print(f"Your income {salary} was successfully validated ")
     return True
 
 
@@ -195,8 +198,9 @@ def get_age():
     age = 0
     try:
         age = input('Enter your '
-                    f'{Back.YELLOW}{Fore.BLACK}age{Style.RESET_ALL} '
-                    f'or select "{Back.YELLOW}{Fore.BLACK} Q {Style.RESET_ALL}" '
+                    f'{Back.LIGHTYELLOW_EX}{Fore.BLACK}age{Style.RESET_ALL} '
+                    f'or select "{Back.LIGHTYELLOW_EX}{Fore.BLACK} Q '
+                    f'{Style.RESET_ALL}" '
                     'to quit\n')
         if age.upper() == "Q":
             if quit_all() is False:
@@ -225,13 +229,18 @@ def is_married():
     print("Are you living in a formal marriage?")
     while True:
         married = input('Press "'
-                        f'{Back.YELLOW}{Fore.BLACK} Y {Style.RESET_ALL}" '
+                        f'{Back.LIGHTYELLOW_EX}{Fore.BLACK} Y '
+                        f'{Style.RESET_ALL}" '
                         'for Yes or '
-                        f'"{Back.YELLOW}{Fore.BLACK} N {Style.RESET_ALL}" '
+                        f'"{Back.LIGHTYELLOW_EX}{Fore.BLACK} N '
+                        f'{Style.RESET_ALL}" '
                         'if you are not or select '
-                        f'"{Back.YELLOW}{Fore.BLACK} Q {Style.RESET_ALL}" '
+                        f'"{Back.LIGHTYELLOW_EX}{Fore.BLACK} Q '
+                        f'{Style.RESET_ALL}" '
                         'to quit.\n')
-        if married[0] == "Y" or married[0] == "y":
+        if len(married) == 0:
+            print("Invalid value. Please try again!")
+        elif married[0] == "Y" or married[0] == "y":
             print("You are married")
             return True
         elif married[0] == "N" or married[0] == "n":
@@ -295,7 +304,7 @@ def create_person():
         married = is_married()
         if married == 'quit':
             continue
-        time.sleep(1)
+        time.sleep(3)
         clear()
         flag = False
     person = Person(name, age, married, salary)
@@ -312,19 +321,17 @@ def calculate_final_tax(salary, partnership):
     (no tax)
     """
     sal = float(salary)
-    base_tax = sal * 0.2
+    base_tax = "{:.2f}".format(float(sal * 0.2))
     tax_credit = float(calculate_tax_credit(bool(partnership)))
     usc = float(calculate_usc(sal))
     prsi = float(calculate_prsi(sal))
-    final_tax = (base_tax - tax_credit) + prsi + usc
+    final_tax = (float(base_tax) - tax_credit) + prsi + usc
     rounded_tax = "{:.2f}".format(float(final_tax))
+    if final_tax < 0:
+        rounded_tax = 0
     print(f'Base tax: {base_tax} Tax Credit: {tax_credit} '
-          'USC: {usc} PRSI: {prsi} Final Tax: {rounded_tax}')
-    if final_tax > 0:
-        return rounded_tax
-    else:
-        print(f"Reduced to 0")
-        return 0
+          f'USC: {usc} PRSI: {prsi} Final Tax: {rounded_tax}')
+    return final_tax
 
 
 def calculate_tax_credit(partnership):
@@ -409,9 +416,10 @@ def submit_data(person):
     print(f'\t{person.age} years old,')
     print(f'\tMarried: {person.married},')
     print(f'\tSalary: {person.salary}.')
-    submit = input(f'Enter "{Back.YELLOW}{Fore.BLACK} Y {Style.RESET_ALL}" '
+    submit = input(f'Enter "{Back.LIGHTYELLOW_EX}{Fore.BLACK} Y '
+                    f'{Style.RESET_ALL}" '
                     'to submit your data or select '
-                    f'"{Back.YELLOW}{Fore.BLACK} N {Style.RESET_ALL}" '
+                    f'"{Back.LIGHTYELLOW_EX}{Fore.BLACK} N {Style.RESET_ALL}" '
                     'to discard data.\n')
     while True:
         if submit.upper() == "Y":
@@ -439,7 +447,7 @@ def functions_manager():
     update_sheet(person)
     print('Application complete!!!')
     renew = input('\nWould You like to make a new calculation? '
-                  f'{Back.YELLOW}{Fore.BLACK}Y/N{Style.RESET_ALL}\n')
+                  f'{Back.LIGHTYELLOW_EX}{Fore.BLACK}Y/N{Style.RESET_ALL}\n')
     while True:
         if renew.upper() == "Y":
             functions_manager()
@@ -449,9 +457,11 @@ def functions_manager():
             print("\n\tThank You. Have a nice day!\n")
             break
         else:
-            print(f'Enter "{Back.YELLOW}{Fore.BLACK} Y {Style.RESET_ALL}" '
+            print(f'Enter "{Back.LIGHTYELLOW_EX}{Fore.BLACK} Y '
+                  f'{Style.RESET_ALL}" '
                   'to start a new Calculation')
-            renew = input(f'or "{Back.YELLOW}{Fore.BLACK} N {Style.RESET_ALL}"'
+            renew = input(f'or "{Back.LIGHTYELLOW_EX}{Fore.BLACK} N '
+                          f'{Style.RESET_ALL}"'
                           ' to quit.\n')
 
 
