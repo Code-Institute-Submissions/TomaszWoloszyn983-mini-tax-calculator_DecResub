@@ -331,7 +331,7 @@ def calculate_final_tax(salary, partnership):
         rounded_tax = 0
     print(f'Base tax: {base_tax} Tax Credit: {tax_credit} '
           f'USC: {usc} PRSI: {prsi} Final Tax: {rounded_tax}')
-    return final_tax
+    return rounded_tax
 
 
 def calculate_tax_credit(partnership):
@@ -457,10 +457,10 @@ def functions_manager():
             print("\n\tThank You. Have a nice day!\n")
             break
         else:
-            print(f'Enter "{Back.LIGHTYELLOW_EX}{Fore.BLACK} Y '
-                  f'{Style.RESET_ALL}" '
-                  'to start a new Calculation')
-            renew = input(f'or "{Back.LIGHTYELLOW_EX}{Fore.BLACK} N '
+            renew = input(f'Enter "{Back.LIGHTYELLOW_EX}{Fore.BLACK}'
+                          f' Y {Style.RESET_ALL}" '
+                          'to start a new Calculation '
+                          f'or "{Back.LIGHTYELLOW_EX}{Fore.BLACK} N '
                           f'{Style.RESET_ALL}"'
                           ' to quit.\n')
 
