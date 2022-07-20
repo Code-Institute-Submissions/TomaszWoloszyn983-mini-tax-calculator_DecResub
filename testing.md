@@ -98,3 +98,13 @@ Submit function accepts only "Y" or "N" input in upper and lowercase.
 Submiting data causes that tax calculating function are lauched and the data are sent ot the google sheet.
 
 ![Quit_validation](documentation/testing/submit_2.jpg)
+
+
+
+# update_sheet function testing
+
+Function successfully sends calculated data to google sheet.
+
+![Update_validation](documentation/testing/send_data_3.jpg)
+
+![Update_validation](documentation/testing/send_data_3_sheet.jpg)
