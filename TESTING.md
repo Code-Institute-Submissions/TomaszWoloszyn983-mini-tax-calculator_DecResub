@@ -7,7 +7,7 @@
 
 # get_name function testing:
 
-Invalid input is refused by validator and the application repeats the request until the validation succeeds.
+Invalid input is refused by validator and the application repeats the request as many times as the validation succeeds.
 
 ![Name_validation](documentation/testing/name_1.jpg)
 
@@ -100,18 +100,10 @@ Submiting data causes that tax calculating function are lauched and the data are
 ![Quit_validation](documentation/testing/submit_2.jpg)
 
 
-<<<<<<< HEAD:testing.md
-
-=======
->>>>>>> cfb7176 (Rename and update testing file. Minor improvements in the code):TESTING.md
 # update_sheet function testing
 
 Function successfully sends calculated data to google sheet.
 
 ![Update_validation](documentation/testing/send_data_3.jpg)
 
-<<<<<<< HEAD:testing.md
 ![Update_validation](documentation/testing/send_data_3_sheet.jpg)
-=======
-![Update_validation](documentation/testing/send_data_3_sheet.jpg)
->>>>>>> cfb7176 (Rename and update testing file. Minor improvements in the code):TESTING.md
