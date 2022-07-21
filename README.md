@@ -16,17 +16,40 @@ The application calculates the weekly tax. Which means that all input data shoul
 
 After the application starts it asks the user for some details that are required for the tax to be calculated.
 - **Name:** The first question is about the users name. This information is only needed for identification the user.
-- **Salary:** Salary is the main factor tax calculation is based on. 
+
+![Get Name](documentation/images/get_name.jpg)
+
+- **Salary:** Salary is the main factor tax calculation is based on.
+
   * **Enter Salary:** The salary can be entered directly by writting its numeric, float value in the terminal, or 
     in a case that the user doesn't know it, it can be calculated.
+
+    ![Enter salary](documentation/images/get_salary.jpg)
+
   * **Calculate Salary:** To calculate salary the option "C" has to be chosen. Then a set of two question will be asked:
-    A question about the hourly rate and the number of hours worked. The salary is calculated by multiplication the hourly rate and the number of hours
+    A question about the hourly rate and the number of hours worked. The salary is calculated by multiplication the hourly rate and the number of hours.
+
+    ![Calculate income](documentation/images/calc_salary.jpg)
+
   * **Validation:** The next step is validation that follows after the salary is either entered or calculated. The validation check if the salary doesn't contain invalid symbol or negative numbers.
 - **Age:** Although there is no minimum age at which you are liable to pay taxes, only people 16 uears old or older can be employed for full time work. That is why the application asks for this information. Validation function refuses any input that is lower than 16 and higher than 120 years old.
 
-    ![Age_validation](documentation/images/age_validation.jpg)
+    ![Get Age](documentation/images/get_age.jpg)
 
 - **Marriage/Partnership:** The main factor for calculating Tax Credit. Returns boolean value.
+
+  ![Marriage](documentation/images/is_married.jpg)
+
+- **Submitting Data**
+
+  The last step is to decide if you want to submit your data or to discard them and repeat all the requests again.
+
+  Submitted data will be processed by calculator, passed into Person class and sent to the Google Sheet.
+
+  ![Submit data](documentation/images/submit_data.jpg)
+
+  After the application it completed the user can choose to restart the application or to close it.
+
 - **Tax Calculation:** The main functionality of this application. Calculates the Taxes value based on Irish Revenue system, it uses following factors:
   * **Tax Credit:** Tax relief. Dependend on marital status.
   * **USC:** Universal Social Charge.
@@ -34,20 +57,52 @@ After the application starts it asks the user for some details that are required
   * **Final Tax:** Calculates the sum of all taxes.
 - **Update Google Sheet:** The last functionality, that allows the user to send and archive his result.
 
+- **Quit function**
 
-![Flowchart image](documentation/images/tax_calc_flowchart.jpg)
+  Quit function interrupts the current request and moves the user to first question. 
+
+  ![Quit function](documentation/images/quit_all.jpg)
+
+- **Class Person**
+
+  Stores all the users data collected by the application. Also the results of calculations are passed to this class.
+
+  `
+  
+      class Person:
+      """
+      Store users data such as name, age, information about formal relations and
+      users salary.
+      These data are base to further calculations.
+      """
+      taxes = 0
+
+      def __init__(self, name, age, married, salary):
+          self.name = name
+          self.age = age
+          self.married = married
+          self.salary = salary
+          self.taxes
+  `
+
+
+
+## Flowchart ##
+
+  ![Flowchart image](documentation/images/tax_calc_flowchart.jpg)
  
 ## Future Features
   - Searching and displaying users data from google sheet.
+    Creating authorisation function to protect data from being loaded by authorised user.
   - Calculating other type of taxes such as Capital Gains Tax.
+  - Improve calculation of the Tax Credit to make it more accurate. At the moment it is based on rounded number of weeks.
 
 ## Technologies used:
   
  - **Python** - an interpreted, object-oriented, high-level programming language.
  - **Google Drive API** - allows you to create apps that leverage Google Drive cloud storage.
  - **Google Sheets** - A web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
-
-## Unfixed buds:
+ - **Colorama** - The Colorama is one of the built-in Python modules to display the text in different colors. It is used to make the code more readable.
 
 
 ## Testing
@@ -115,6 +170,14 @@ To create users own Google Sheet following steps must be taken.
       
       Instruction how to create and setup google sheet with the program. 
       > To achive this create a new sheet. Copy client_email from credential file in your workspace. Select "Share" option in your sheet and paste the client_email in the diagram.
+      > Update your requirements.txt file with gspread==your version of gspread.
+
+    * Heroku. For the application to be deployed properly Heroku Account has to be updated.
+      
+      Instruction how to update Heroku config vars:
+      > Find your application in your Heroku account. Enter to the settings. Select Config Vars. 
+      > Add new variable with key = CREDS and into value section paste the whole content of the CREDS.json file from the application.
+      > Add another new variable enter Key = PORT, value = 8000. 
 
 ------------------ !!!!!!!!!!!!!!!!!!! ------------------- !!!!!!!!!!!!!!!!!!!!!!!!! ---------------------
 

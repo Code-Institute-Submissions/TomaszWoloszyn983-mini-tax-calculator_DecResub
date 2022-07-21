@@ -51,16 +51,19 @@ def welcome_message():
     """
     clear()
     print("\n\n\tWelcome to Mini Tax Calculator!\n")
-    # time.sleep(0.5)
+    time.sleep(0.5)
 
     print("This application will help you qickly calculate your taxes")
     print("The application will ask you for some information that are")
     print("necessary for making calculations")
+    print('The application calculates only fee charged by the revenue, '
+         '\nit does not include fees taken by the employer or any'
+         'other \nfees.')
     print("This project will serve educational purposes only.")
     print("No users data are to be stored, shared")
     print("or used for any other purpose.\n")
     # time.sleep(2)
-    input("Press Enter to continue...")
+    input("\tPress Enter to continue...")
     clear()
 
 
@@ -70,7 +73,7 @@ def get_user_name():
     Returns that name.
     """
     name = validate_name(input("Please enter your name here: \n"))
-    print(f"Welcome {name} Thank You for using our application")
+    print(f"Welcome {name}. Thank You for using our application")
     return name
 
 
