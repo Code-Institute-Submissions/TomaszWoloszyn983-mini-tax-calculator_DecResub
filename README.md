@@ -60,6 +60,7 @@ After the application starts it asks the user for some details that are required
 - **Quit function**
 
   Quit function interrupts the current request and moves the user to first question. 
+  Selecting "N" option returns the user to the current question.
 
   ![Quit function](documentation/images/quit_all.jpg)
 
@@ -93,7 +94,7 @@ After the application starts it asks the user for some details that are required
  
 ## Future Features
   - Searching and displaying users data from google sheet.
-    Creating authorisation function to protect data from being loaded by authorised user.
+  - Creating authorisation function to protect data from being loaded by unauthorised user.
   - Calculating other type of taxes such as Capital Gains Tax.
   - Improve calculation of the Tax Credit to make it more accurate. At the moment it is based on rounded number of weeks.
 
@@ -148,7 +149,8 @@ You can install this project's requirements (where applicable) using: `pip3 inst
 
 The Procfile can be created with the following command: `echo web: node index.js > Procfile`
 
-To create users own Google Sheet following steps must be taken.
+### Google Drive and Google Sheets.
+To add users own Google Sheet following steps must be taken.
  - Create an account on Google Cloud Platform.
  - Open new project.
  - Choose APIs and Services option and click Library.
@@ -186,7 +188,10 @@ The frontend terminal should now be connected and deployed to Heroku.
 
 ## References and Credits:
 
-- clear terminal function in python - https://stackoverflow.com/questions/2084508/clear-terminal-in-python
+The application was created to serve educational purposes only and will not be used for any commercial use.
+
+- Irish Reveue webpage. The main source of information about the taxes - https://www.revenue.ie/en/Home.aspx
+- Clear terminal function in python - https://stackoverflow.com/questions/2084508/clear-terminal-in-python
 - Colorama tutorial on You Tube - https://www.youtube.com/watch?v=u51Zjlnui4Y , https://www.youtube.com/watch?v=bg-quTTOeH4
 
 

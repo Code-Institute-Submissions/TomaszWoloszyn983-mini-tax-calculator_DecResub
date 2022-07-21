@@ -21,8 +21,6 @@ SHEET = GSPREAD_CLIENT.open('mini_tax_calculator_sheet')
 
 info = SHEET.worksheet('payee-data')
 data = info.get_all_values()
-# prints data from the google sheets
-# pprint(data)
 
 
 def update_sheet(person):
@@ -53,15 +51,15 @@ def welcome_message():
     print("\n\n\tWelcome to Mini Tax Calculator!\n")
     time.sleep(0.5)
 
-    print("This application will help you qickly calculate your taxes")
+    print("This application helps you to qickly calculate your taxes")
     print("The application will ask you for some information that are")
     print("necessary for making calculations")
     print('The application calculates only fee charged by the revenue, '
-         '\nit does not include fees taken by the employer or any'
-         'other \nfees.')
+          '\nit does not include fees taken by the employer or any '
+          'other \nfees.')
     print("This project will serve educational purposes only.")
     print("No users data are to be stored, shared")
-    print("or used for any other purpose.\n")
+    print("or used for any other purpose than education.\n")
     # time.sleep(2)
     input("\tPress Enter to continue...")
     clear()
@@ -265,8 +263,9 @@ class Person:
     taxes = 0
 
     def __init__(self, name, age, married, salary):
-        # This constructor doesn't have taxes parameter because it is used only
-        # for taking data from the user for calculating taxes in the next step.
+        # This constructor doesn't have taxes parameter.
+        # It is used only for taking data from the user.
+        # taxes variable is initialized in the next steps.
         self.name = name
         self.age = age
         self.married = married
@@ -333,7 +332,8 @@ def calculate_final_tax(salary, partnership):
     if final_tax < 0:
         rounded_tax = 0
     print(f'Base tax: {base_tax} Tax Credit: {tax_credit} '
-          f'USC: {usc} PRSI: {prsi} Final Tax: {rounded_tax}')
+          f'USC: {usc} PRSI: {prsi}')
+    print(f'Final Tax: {rounded_tax}')
     return rounded_tax
 
 
@@ -457,7 +457,8 @@ def functions_manager():
             break
         elif renew.upper() == "N":
             clear()
-            print("\n\tThank You. Have a nice day!\n")
+            time.sleep(1)
+            print("\n\n\tThank You. Have a nice day!\n")
             break
         else:
             renew = input(f'Enter "{Back.LIGHTYELLOW_EX}{Fore.BLACK}'
