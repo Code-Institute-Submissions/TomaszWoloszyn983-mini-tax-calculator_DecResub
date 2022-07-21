@@ -89,7 +89,7 @@ After the application starts it asks the user for some details that are required
 
 ## Flowchart ##
 
-  ![Flowchart image](documentation/images/tax_calc_flowchart.jpg)
+  ![Flowchart image](documentation/images/tax_calc_flowchart_update.jpg)
  
 ## Future Features
   - Searching and displaying users data from google sheet.
@@ -107,7 +107,7 @@ After the application starts it asks the user for some details that are required
 
 ## Testing
   The applications code was tested using Pep8 code validator: http://pep8online.com/.
-  More details about tesings are available in the separate testing section here or in the dedicated file testing.md [here](testing.md).
+  More details about tesings are available in the separate testing section here or in the dedicated file testing.md [here](TESTING.md).
 
 
 
@@ -148,13 +148,6 @@ You can install this project's requirements (where applicable) using: `pip3 inst
 
 The Procfile can be created with the following command: `echo web: node index.js > Procfile`
 
------------------- !!!!!!!!!!!!!!!!!!! ------------------- !!!!!!!!!!!!!!!!!!!!!!!!! ---------------------
-IMPORTANT SECTION YOU MUST UPDATE !!!!!!!!!!!!!!!!
-If you are using an API like Google Sheets, then you must also include the instructions on how someone can obtain their own API/Credentials.
-Advise how they can get their own, steps necessary to get one, and then creating the creds.json file or env.py file and pasting in their keys.
-Also on Heroku config vars, which variable key/value is also needed to get it working on Heroku
-END OF IMPORTANT EXTRA SECTION !!!!!!!!!!!!!!!!!!!
-
 To create users own Google Sheet following steps must be taken.
  - Create an account on Google Cloud Platform.
  - Open new project.
@@ -179,8 +172,6 @@ To create users own Google Sheet following steps must be taken.
       > Add new variable with key = CREDS and into value section paste the whole content of the CREDS.json file from the application.
       > Add another new variable enter Key = PORT, value = 8000. 
 
------------------- !!!!!!!!!!!!!!!!!!! ------------------- !!!!!!!!!!!!!!!!!!!!!!!!! ---------------------
-
 For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
 
 - In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
@@ -195,6 +186,10 @@ The frontend terminal should now be connected and deployed to Heroku.
 
 ## References and Credits:
 
+- clear terminal function in python - https://stackoverflow.com/questions/2084508/clear-terminal-in-python
+- Colorama tutorial on You Tube - https://www.youtube.com/watch?v=u51Zjlnui4Y , https://www.youtube.com/watch?v=bg-quTTOeH4
+
 
 ## Credits:
-<!-- I would like to especially thank to Tim Nelson from Code Institute for his great support. -->
+
+I would like to especially thank to Tim Nelson from Code Institute for his great support.
