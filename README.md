@@ -104,6 +104,7 @@ After the application starts it asks the user for some details that are required
  - **Google Drive API** - allows you to create apps that leverage Google Drive cloud storage.
  - **Google Sheets** - A web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
  - **Colorama** - The Colorama is one of the built-in Python modules to display the text in different colors. It is used to make the code more readable.
+ - **Draw.IO** - Software for making diagrams and charts.
 
 
 ## Testing
@@ -193,7 +194,7 @@ The application was created to serve educational purposes only and will not be u
 - Irish Reveue webpage. The main source of information about the taxes - https://www.revenue.ie/en/Home.aspx
 - Clear terminal function in python - https://stackoverflow.com/questions/2084508/clear-terminal-in-python
 - Colorama tutorial on You Tube - https://www.youtube.com/watch?v=u51Zjlnui4Y , https://www.youtube.com/watch?v=bg-quTTOeH4
-- Taxes calculation tutorial - https://www.youtube.com/watch?v=3MzyWvwuElI&list=TLPQMjIwNzIwMjLRHn7B5SdH4w&index=3
+- USC and PRSI taxes rates tutorial - https://www.youtube.com/watch?v=3MzyWvwuElI&list=TLPQMjIwNzIwMjLRHn7B5SdH4w&index=3
 
 
 ## Credits:

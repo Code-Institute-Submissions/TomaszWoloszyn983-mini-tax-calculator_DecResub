@@ -52,7 +52,7 @@ def welcome_message():
     time.sleep(0.5)
 
     print("This application helps you to qickly calculate your taxes")
-    print("The application will ask you for some information that are")
+    print("You wiil be asked for some information that are")
     print("necessary for making calculations")
     print('The application calculates only fee charged by the revenue, '
           '\nit does not include fees taken by the employer or any '
@@ -60,7 +60,7 @@ def welcome_message():
     print("This project will serve educational purposes only.")
     print("No users data are to be stored, shared")
     print("or used for any other purpose than education.\n")
-    # time.sleep(2)
+    time.sleep(0.5)
     input("\tPress Enter to continue...")
     clear()
 
@@ -71,7 +71,8 @@ def get_user_name():
     Returns that name.
     """
     name = validate_name(input("Please enter your name here: \n"))
-    print(f"Welcome {name}. Thank You for using our application")
+    clear()
+    print(f"Hi {name}! Thank You for using our application.\n")
     return name
 
 
@@ -83,7 +84,6 @@ def validate_name(name):
     Also the name should contain at least three letter.
     """
     if name.replace(" ", "").isalpha() and len(name) >= 3:
-        print ("Name is valid!")
         return name
 
     else:
@@ -291,22 +291,22 @@ def create_person():
     while(flag is True):
         clear()
         name = get_user_name()
-        time.sleep(1)
+        time.sleep(3)
         clear()
         salary = request_salary()
         if salary is False:
             continue
-        time.sleep(1)
+        time.sleep(2)
         clear()
         age = get_age()
         if age is False:
             continue
-        time.sleep(1)
+        time.sleep(2)
         clear()
         married = is_married()
         if married == 'quit':
             continue
-        time.sleep(3)
+        time.sleep(2)
         clear()
         flag = False
     person = Person(name, age, married, salary)
@@ -389,7 +389,6 @@ def calculate_usc(income):
     increased and the and the income value is decresed.
     The last condition has to be nested in the previous one.
     """
-    print(f'Input = {income}')
     result = 0
     annual_income = income * 52
     if annual_income > 12012:
