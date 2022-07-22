@@ -193,6 +193,7 @@ The application was created to serve educational purposes only and will not be u
 - Irish Reveue webpage. The main source of information about the taxes - https://www.revenue.ie/en/Home.aspx
 - Clear terminal function in python - https://stackoverflow.com/questions/2084508/clear-terminal-in-python
 - Colorama tutorial on You Tube - https://www.youtube.com/watch?v=u51Zjlnui4Y , https://www.youtube.com/watch?v=bg-quTTOeH4
+- Taxes calculation tutorial - https://www.youtube.com/watch?v=3MzyWvwuElI&list=TLPQMjIwNzIwMjLRHn7B5SdH4w&index=3
 
 
 ## Credits:

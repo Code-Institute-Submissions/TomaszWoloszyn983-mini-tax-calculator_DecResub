@@ -367,17 +367,13 @@ def calculate_prsi(income):
     You will pay €7.25 PRSI weekly (€15.08 minus your €7.83 PRSI credit).
     prsi_rate is an equivalent of percentage value of 4% in this case.
     If the income is lower than 352 prsi is 0.
+    From January 2022 the prsi free value was inceased from 352
+    to 410.
     """
     prsi = 0
     if income > 410:
         prsi_rate = 0.04
-        credit = (income - 410)/6
-        if(credit > 12):
-            credit = 12
-        else:
-            credit = 12-credit
-        charge = income * prsi_rate
-        prsi = charge - credit
+        prsi = income * prsi_rate
     return "{:.2f}".format(float(prsi))
 
 
