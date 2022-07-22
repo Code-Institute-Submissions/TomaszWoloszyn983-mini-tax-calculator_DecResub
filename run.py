@@ -369,9 +369,9 @@ def calculate_prsi(income):
     If the income is lower than 352 prsi is 0.
     """
     prsi = 0
-    if income > 352:
+    if income > 410:
         prsi_rate = 0.04
-        credit = (income - 352)/6
+        credit = (income - 410)/6
         if(credit > 12):
             credit = 12
         else:
@@ -393,19 +393,26 @@ def calculate_usc(income):
     increased and the and the income value is decresed.
     The last condition has to be nested in the previous one.
     """
+    print(f'Input = {income}')
     result = 0
     annual_income = income * 52
     if annual_income > 12012:
         result += 12012*0.005
         annual_income -= 12012
     if annual_income > 9283:
-        result += 9283*0.02
+        if annual_income >= 9283:
+            result += 9283*0.02
+        else:
+            result += annual_income*0.02
         annual_income -= 9283
-    if annual_income > 49357:
-        result += 49357*0.045
-        annual_income -= 49357
-        if annual_income > 0:
-            result += annual_income*0.08
+    if annual_income > 0:
+        if annual_income >= 49357:
+            result += 49357*0.045
+        else:
+            result += annual_income*0.045
+        annual_income = annual_income - 49357
+    if annual_income > 0:
+        result += annual_income*0.08
     return "{:.2f}".format(float(result/52))
 
 
