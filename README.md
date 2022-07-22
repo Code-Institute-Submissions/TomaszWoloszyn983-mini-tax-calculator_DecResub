@@ -2,7 +2,7 @@
 
 ![Title image](documentation/images/am_i_responsive.jpg)
 
-## Welcome to my Project! 
+## Welcome to my project! 
 
 
 The subject of the project is a Tax Calculator. The purpose of the project is to create 
@@ -12,10 +12,10 @@ a simple and easy calculator for calculating income taxes based on the Irish Rev
 
 ## Features
 
-The application calculates the weekly tax. Which means that all input data should also base on the weekly period.
+The application calculates the weekly tax, which means that all input data should also base on the weekly period.
 
 After the application starts it asks the user for some details that are required for the tax to be calculated.
-- **Name:** The first question is about the users name. This information is only needed for identification the user.
+- **Name:** The first question is about the users name. This information is only needed for the identification of the user.
 
 ![Get Name](documentation/images/get_name.jpg)
 
@@ -31,8 +31,8 @@ After the application starts it asks the user for some details that are required
 
     ![Calculate income](documentation/images/calc_salary.jpg)
 
-  * **Validation:** The next step is validation that follows after the salary is either entered or calculated. The validation check if the salary doesn't contain invalid symbol or negative numbers.
-- **Age:** Although there is no minimum age at which you are liable to pay taxes, only people 16 uears old or older can be employed for full time work. That is why the application asks for this information. Validation function refuses any input that is lower than 16 and higher than 120 years old.
+  * **Validation:** The next step is validation that follows after the salary is either entered or calculated. The validation checks if the salary doesn't contain invalid symbol or negative numbers.
+- **Age:** Although there is no minimum age at which you are liable to pay taxes, only people 16 uears old or older can be employed for full time work. That is why the application asks for this information. Validation function refuses any input that is lower than 16 and higher than 120.
 
     ![Get Age](documentation/images/get_age.jpg)
 
@@ -48,10 +48,10 @@ After the application starts it asks the user for some details that are required
 
   ![Submit data](documentation/images/submit_data.jpg)
 
-  After the application it completed the user can choose to restart the application or to close it.
+  After the application is completed the user can choose to restart the application or to close it.
 
 - **Tax Calculation:** The main functionality of this application. Calculates the Taxes value based on Irish Revenue system, it uses following factors:
-  * **Tax Credit:** Tax relief. Dependend on marital status.
+  * **Tax Credit:** Tax relief. Depending on marital status.
   * **USC:** Universal Social Charge.
   * **PRSI:** Pay Related Social Insurance.
   * **Final Tax:** Calculates the sum of all taxes.
@@ -96,7 +96,7 @@ After the application starts it asks the user for some details that are required
   - Searching and displaying users data from google sheet.
   - Creating authorisation function to protect data from being loaded by unauthorised user.
   - Calculating other type of taxes such as Capital Gains Tax.
-  - Improve calculation of the Tax Credit to make it more accurate. At the moment it is based on rounded number of weeks.
+  - Improving calculation of the Tax Credit to make it more accurate. At the moment it is based on rounded number of weeks.
 
 ## Technologies used:
   
