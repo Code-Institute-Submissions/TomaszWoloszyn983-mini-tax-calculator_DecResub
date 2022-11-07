@@ -115,7 +115,7 @@ def quit_all():
         else:
             print('Tap "Y" to submit or "N" to return to the previous process')
 
-
+# Error is in one of the three functions below.
 def request_salary():
     """
     Request salary from the user.
@@ -161,8 +161,8 @@ def calculate_salary():
             print('Negative value!')
             raise ValueError
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n")
-        calculate_salary()
+        print("Please try again. \n")
+        salary = calculate_salary()
     return "{:.2f}".format(float(salary))
 
 
@@ -177,15 +177,11 @@ def validate_salary(salary):
     """
     try:
         temp = float(salary)
-        if temp <= 0:
-            print("This value must be higher that 0.")
+        if temp < 0:
+            print("This value must be higher than 0.") 
             raise ValueError
-        # assert temp < 0
-    # except AssertionError:
-    #     print("This value must be higher that 0.")
-    #     return False
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print("Please try again.\n")
         return False
     print(f"Your income {salary} was successfully validated ")
     return True
@@ -207,13 +203,13 @@ def get_age():
             if quit_all() is False:
                 return False
         elif int(age) < 16 or int(age) > 120:
-            print("The age must be in the range between 16 and 120 years old.")
+            print("The age must a number between 16 and 120 years old.")
             raise ValueError
         else:
             age = int(age)
             print(f'You are {age} years old')
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n")
+        print(f"Please try again. \n")
         age = get_age()
     return age
 
@@ -251,7 +247,7 @@ def is_married():
             if quit_all() is False:
                 return 'quit'
         else:
-            print("Invalid value. Please try again!")
+            print("Please try again! Press Y, N or Q")
 
 
 class Person:
@@ -437,7 +433,7 @@ def submit_data(person):
             print("Process interrupted by the user\n\n")
             return True
         else:
-            submit = input('Enter " Y " to submit or "N" to enter new data.\n')
+            submit = input('Enter "Y" to submit or "N" to enter new data.\n')
 
 
 def functions_manager():
