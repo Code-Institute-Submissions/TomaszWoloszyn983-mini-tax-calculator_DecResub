@@ -9,7 +9,7 @@
 ## 1. get_name function testing:
 
 * The entered value is passed to the validation function. 
-    - If the validation succeeds the user is expected to be move to the next step.
+    - If the validation succeeds the user is expected to be moved to the next step.
     - If the validation doesn't succeeds the the user is redirected back.
 
 ![flowchart_name](documentation/testing/tax_calc_flowchart_name.jpg)
@@ -31,23 +31,35 @@ Inputs that are too short, integers, empty inputs or any symbols other than lowe
 
 
 
-## request_salary function testing:
+## 2. request_salary function testing:
 
-Strings, empty string or input containing string or letters are refused by the validator. 
-Also zero or negative numbers are refused.
+* The user can put the value directly or he can calculate the salary (that function is tested in the next subsection).
+    - If the written value is valid the user is expected to be moved to the next question.
+    - If the requestes value does not pass the validation, the user is redirected back.
 
-![Income_validation](documentation/testing/salary_2_errors.jpg)
+
+![Quit_validation](documentation/testing/tax_calc_flowchart_salary.jpg)
+
+* Example of valid value:
 
 Float and integer input are allowed: number such as 123 or 123.45.
 
 ![Income_validation](documentation/testing/salary_3_valid.jpg)
+
+* Examples of invalid values:
 
 Also Float numbers as 123.456789 are accepted by the validator.
 The validation function rounds such a numbers to the correct format: 123.45
 
 ![Income_validation](documentation/testing/salary_4_valid.jpg)
 
-#### calculate_salary function testing
+Strings, empty string or input containing string or letters are refused by the validator. 
+Also zero or negative numbers are refused as well.
+
+![Income_validation](documentation/testing/salary_2_errors.jpg)
+
+
+## 3. calculate_salary function testing
 After selection option "C" the user can calculate the salary by entering his hourly rate and number of working hours.
 The function is secured from inputing any negative values.
 
@@ -57,7 +69,7 @@ Only positive numbers are allowed.
 
 ![Income_validation](documentation/testing/salary_8_valid_calculation.jpg)
 
-## get_age function testing
+## 4. get_age function testing
 
 This function is secured from inputing any string or empty string values.
 
@@ -68,7 +80,7 @@ Also only numbers in range from 16 to 120 are allowed.
 ![Age_validation](documentation/testing/age_2_valid.jpg)
 
 
-## is_married function testing
+## 5. is_married function testing
 
 Function is_married takes agruments yes or no.
 It refuses any string that are not "Y", "y" or "N", "n" empty strings, integers, or any other values.
@@ -84,7 +96,7 @@ However the validation accepts also any string that start at letter n or letter 
 ![Marriage_validation](documentation/testing/marriage_5_yes_answer.jpg)
 
 
-## quit function testing
+## 6. quit function testing
 
 After selection option Q for quit the user is asked for submiting his choice.
 He can only enter lower or uppercase "y" or "n". 
@@ -102,7 +114,7 @@ If the user enters "N" for no he will be returned to the previous question.
 ![Quit_validation](documentation/testing/quit_2_errors_n_answer.jpg)
 
 
-## submit function testing
+## 7. submit function testing
 
 Submit function accepts only "Y" or "N" input in upper and lowercase.
 
@@ -113,7 +125,7 @@ Submiting data causes that tax calculating function are lauched and the data are
 ![Quit_validation](documentation/testing/submit_2.jpg)
 
 
-## update_sheet function testing
+## 8. update_sheet function testing
 
 Function successfully sends calculated data to google sheet.
 
@@ -131,6 +143,7 @@ Function successfully sends calculated data to google sheet.
 In the result that caused stopping the application and displaying the error message. 
 
 ![Salary_error](documentation/testing/salary_none_error.jpg)
+
 
 The reason of occuring the error was the line 165, where returning value of the calculate_salary() function wasn't assigned to any variable. 
 
