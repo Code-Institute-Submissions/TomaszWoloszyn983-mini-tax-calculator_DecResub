@@ -115,7 +115,7 @@ def quit_all():
         else:
             print('Tap "Y" to submit or "N" to return to the previous process')
 
-# Error is in one of the three functions below.
+
 def request_salary():
     """
     Request salary from the user.

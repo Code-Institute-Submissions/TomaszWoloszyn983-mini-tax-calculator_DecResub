@@ -67,24 +67,22 @@ After the application starts it asks the user for some details that are required
 - **Class Person**
 
   Stores all the users data collected by the application. Also the results of calculations are passed to this class.
+```python
+class Person:
+"""
+Store users data such as name, age, information about formal relations and
+users salary.
+These data are base to further calculations.
+"""
+taxes = 0
 
-  `
-  
-      class Person:
-      """
-      Store users data such as name, age, information about formal relations and
-      users salary.
-      These data are base to further calculations.
-      """
-      taxes = 0
-
-      def __init__(self, name, age, married, salary):
-          self.name = name
-          self.age = age
-          self.married = married
-          self.salary = salary
-          self.taxes
-  `
+def __init__(self, name, age, married, salary):
+    self.name = name
+    self.age = age
+    self.married = married
+    self.salary = salary
+    self.taxes
+```
 
 
 
